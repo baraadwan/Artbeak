@@ -3,7 +3,7 @@ import Button from "../ui/Button";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 flex items-center overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 flex items-center overflow-hidden pb-16 pt-28">
       {/* Background decorative element */}
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-white/10 rounded-full blur-3xl"></div>
 
@@ -11,53 +11,15 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Main Content */}
           <div className="space-y-8">
-            {/* Top text */}
-            <div className="space-y-2">
-              <p className="text-white text-lg">
-                Ready to <span className="font-bold">elevate</span>
-              </p>
-              <p className="text-lime-400 text-lg">your brand?</p>
-              <p className="text-gray-400 text-sm italic">Let&apos;s start</p>
-            </div>
-
             {/* Main headline */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-                <span className="block">Only Pay When</span>
-                <span className="block">you Convert</span>
-                <span className="block text-4xl md:text-6xl italic font-normal text-gray-300">
+                <span className="block">Only Pay </span>
+                <span className="inline mr-5">When you Convert</span>
+                <span className="inline text-4xl md:text-6xl italic font-normal text-gray-300">
                   more
                 </span>
               </h1>
-            </div>
-
-            {/* Description */}
-            <p className="text-xl text-gray-300 max-w-lg leading-relaxed">
-              A US Wyoming company based in Cairo, we are performance based,
-              risk-free website re-design agency that focus on turning normal
-              websites into conversion machines.
-            </p>
-
-            {/* CTA Button */}
-            <div className="pt-4">
-              <Link href="/contact">
-                <Button size="lg" className="group">
-                  Start Now
-                  <svg
-                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </Button>
-              </Link>
             </div>
 
             {/* Social Proof */}
@@ -93,8 +55,37 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Stats & Guarantees */}
+          {/* Right Column - Description, CTA & Stats */}
           <div className="space-y-8">
+            {/* Description */}
+            <p className="text-xl text-gray-300 max-w-lg leading-relaxed">
+              A US Wyoming company based in Cairo, we are performance based,
+              risk-free website re-design agency that focus on turning normal
+              websites into conversion machines.
+            </p>
+
+            {/* CTA Button */}
+            <div className="pt-4">
+              <Link href="/contact">
+                <Button size="lg" className="group">
+                  Start Now
+                  <svg
+                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Button>
+              </Link>
+            </div>
+
             {/* Key Statistics */}
             <div className="grid grid-cols-2 gap-8">
               <div className="text-center">
@@ -110,36 +101,37 @@ const Hero = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Guarantees */}
-            <div className="space-y-4">
-              <div className="h-px bg-gray-600"></div>
-              <div className="flex items-center justify-center space-x-4 text-white text-sm">
-                <span>Refund Guaranteed</span>
-                <div className="w-2 h-2 bg-lime-400 rounded-full"></div>
-                <span>100% Risk Free</span>
-                <div className="w-2 h-2 bg-lime-400 rounded-full"></div>
-                <span>Flexible Pricing</span>
-              </div>
+        {/* Bottom Section - Guarantees & Founders */}
+        <div className="mt-16 space-y-8">
+          {/* Guarantees */}
+          <div className="space-y-4">
+            <div className="h-px bg-gray-600"></div>
+            <div className="flex items-center justify-between text-white text-sm">
+              <span>Refund Guaranteed</span>
+              <span>100% Risk Free</span>
+              <span>Flexible Pricing</span>
             </div>
+          </div>
 
-            {/* Founders Section */}
-            <div className="space-y-4">
-              <div className="h-px bg-gray-600"></div>
-              <div className="flex items-center space-x-6">
-                <div className="flex -space-x-2">
-                  <div className="w-12 h-12 bg-gray-600 rounded-full border-2 border-white"></div>
-                  <div className="w-12 h-12 bg-gray-600 rounded-full border-2 border-white"></div>
-                </div>
-                <div className="flex-1">
-                  <p className="text-white text-xs uppercase tracking-wider mb-2">
-                    FOUNDERS OF ARTBEAK
-                  </p>
-                  <p className="text-white text-sm leading-relaxed">
-                    We help business redesign their normal websites and turn
-                    them into conversion machines risk free.
-                  </p>
-                </div>
+          {/* Founders Section */}
+          <div className="space-y-4">
+            <div className="h-px bg-gray-600"></div>
+            <div className="flex items-center space-x-6">
+              <div className="flex -space-x-2">
+                <div className="w-12 h-12 bg-gray-600 rounded-full border-2 border-white"></div>
+                <div className="w-12 h-12 bg-gray-600 rounded-full border-2 border-white"></div>
+              </div>
+              <div className="flex-1">
+                <p className="text-white text-xs uppercase tracking-wider mb-2">
+                  FOUNDERS OF ARTBEAK
+                </p>
+                <p className="text-white text-sm leading-relaxed">
+                  We help business redesign their normal websites and turn them
+                  into conversion machines risk free.
+                </p>
               </div>
             </div>
           </div>
