@@ -12,7 +12,6 @@ export default function Home() {
       <FeaturedWork />
       <Services />
       <FAQ />
-
       <HeroSection />
     </MainLayout>
   );
