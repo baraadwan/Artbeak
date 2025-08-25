@@ -1,14 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Button from "../ui/Button";
+import DarkVeil from "../ui/DarkVeil";
+import { IconArrowNarrowRight } from "@tabler/icons-react";
+import CountUp from "../ui/CountUp/CountUp";
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 flex items-center overflow-hidden pb-16 pt-28">
-      {/* Background decorative element */}
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-white/10 rounded-full blur-3xl"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="relative bg-[#010208] flex items-center overflow-hidden h-screen min-h-[800px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full absolute inset-0 z-10 pb-16 pt-28 flex justify-center flex-col">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-22">
           {/* Left Column - Main Content */}
           <div className="space-y-8">
             {/* Main headline */}
@@ -16,7 +18,7 @@ const Hero = () => {
               <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
                 <span className="block">Only Pay </span>
                 <span className="inline mr-5">When you Convert</span>
-                <span className="inline text-4xl md:text-6xl italic font-normal text-gray-300">
+                <span className="inline text-4xl md:text-6xl italic font-normal text-gray-300 font-display">
                   more
                 </span>
               </h1>
@@ -57,47 +59,63 @@ const Hero = () => {
 
           {/* Right Column - Description, CTA & Stats */}
           <div className="space-y-8">
-            {/* Description */}
-            <p className="text-xl text-gray-300 max-w-lg leading-relaxed">
-              A US Wyoming company based in Cairo, we are performance based,
-              risk-free website re-design agency that focus on turning normal
-              websites into conversion machines.
-            </p>
+            <div>
+              {/* Description */}
+              <p className="text-xl text-gray-50 max-w-lg leading-relaxed">
+                A US Wyoming company based in Cairo, we are performance based,
+                risk-free website re-design agency that focus on turning normal
+                websites into conversion machines.
+              </p>
 
-            {/* CTA Button */}
-            <div className="pt-4">
-              <Link href="/contact">
-                <Button size="lg" className="group">
-                  Start Now
-                  <svg
-                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </Button>
-              </Link>
+              {/* CTA Button */}
+              <div className="pt-4">
+                <Link href="/contact">
+                  <button className="bg-[#0047ff] hover:bg-blue-700 text-white font-medium pl-6 pr-4 py-3 rounded-full flex items-center justify-center transition-colors group cursor-pointer">
+                    Start Now
+                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center ml-4 transition-transform group-hover:translate-x-1">
+                      <IconArrowNarrowRight className="w-6 h-6 text-[#0047ff] animate-pulse group-hover:animate-none" />
+                    </div>
+                  </button>
+                </Link>
+              </div>
             </div>
 
+            {/* Divider */}
+            <div className="h-px bg-gray-600 mt-28"></div>
+
             {/* Key Statistics */}
-            <div className="grid grid-cols-2 gap-8">
-              <div className="text-center">
-                <div className="text-6xl font-bold text-lime-400 mb-2">95%</div>
+            <div className="grid grid-cols-2 gap-8 ">
+              <div className="text-left">
+                <div className="text-7xl font-semibold text-lime-400 mb-2">
+                  {/* 95% */}
+                  <CountUp
+                    from={0}
+                    to={95}
+                    separator=","
+                    direction="up"
+                    duration={0.1}
+                    className="count-up-text"
+                  />
+                  %
+                </div>
                 <div className="text-white text-sm leading-tight">
-                  CLIENTS SATISFIED AND REPEATING
+                  CLIENTS SATISFIED AND <br /> REPEATING
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-6xl font-bold text-lime-400 mb-2">47+</div>
+              <div className="text-left">
+                <div className="text-7xl font-semibold text-lime-400 mb-2">
+                  <CountUp
+                    from={0}
+                    to={47}
+                    separator=","
+                    direction="up"
+                    duration={0.1}
+                    className="count-up-text"
+                  />
+                  +
+                </div>
                 <div className="text-white text-sm leading-tight">
-                  PROJECTS COMPLETED IN 6 COUNTRIES
+                  PROJECTS COMPLETED IN <br /> 6 COUNTRIES
                 </div>
               </div>
             </div>
@@ -108,10 +126,11 @@ const Hero = () => {
         <div className="mt-16 space-y-8">
           {/* Guarantees */}
           <div className="space-y-4">
-            <div className="h-px bg-gray-600"></div>
-            <div className="flex items-center justify-between text-white text-sm">
+            <div className="flex items-center justify-between text-white text-3xl font-medium">
               <span>Refund Guaranteed</span>
+              <div className="w-2 h-2 bg-white rounded-full"></div>
               <span>100% Risk Free</span>
+              <div className="w-2 h-2 bg-white rounded-full"></div>
               <span>Flexible Pricing</span>
             </div>
           </div>
@@ -120,15 +139,16 @@ const Hero = () => {
           <div className="space-y-4">
             <div className="h-px bg-gray-600"></div>
             <div className="flex items-center space-x-6">
-              <div className="flex -space-x-2">
-                <div className="w-12 h-12 bg-gray-600 rounded-full border-2 border-white"></div>
-                <div className="w-12 h-12 bg-gray-600 rounded-full border-2 border-white"></div>
+              <div className="flex -space-x-2 ">
+                <div className="w-[100px] h-[100px] bg-gray-600 rounded-full border-4 border-white relative">
+                  <p className="text-white text-xs uppercase tracking-wider absolute -bottom-12 left-0 whitespace-nowrap">
+                    FOUNDERS OF <br /> ARTBEAK
+                  </p>
+                </div>
+                <div className="w-[100px] h-[100px] bg-gray-600 rounded-full border-4 border-white"></div>
               </div>
-              <div className="flex-1">
-                <p className="text-white text-xs uppercase tracking-wider mb-2">
-                  FOUNDERS OF ARTBEAK
-                </p>
-                <p className="text-white text-sm leading-relaxed">
+              <div className="flex-1 ml-22">
+                <p className="text-white text-4xl font-medium">
                   We help business redesign their normal websites and turn them
                   into conversion machines risk free.
                 </p>
@@ -137,6 +157,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <DarkVeil />
     </section>
   );
 };

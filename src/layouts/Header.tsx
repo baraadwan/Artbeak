@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 const Header = () => {
@@ -25,11 +26,26 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-gray-900 text-xl font-bold">A</span>
-              </div>
-              <div className="w-3 h-3 bg-yellow-400 rounded-full relative">
-                <div className="absolute inset-0 bg-yellow-400 rounded-full animate-pulse"></div>
+              <div className="w-10 h-10 flex items-center justify-center">
+                <span className="text-white text-5xl font-bold">A</span>
+                <div className="w-5 h-5 relative">
+                  <motion.svg
+                    className="absolute -top-3 -right-2 w-5 h-6 text-yellow-300"
+                    fill="currentColor"
+                    viewBox="0 0 25 24"
+                    style={{ originX: 0.5, originY: 0.5 }}
+                    animate={{ rotate: [0, 360], scale: [1, 0.92, 1.06, 1] }}
+                    transition={{
+                      duration: 2,
+                      ease: "linear",
+                      repeat: Infinity,
+                      repeatDelay: 0.5,
+                      times: [0, 0.4, 0.65, 1],
+                    }}
+                  >
+                    <path d="M0.651611 11.9974C6.65029 11.9974 12.649 5.99868 12.649 0C12.649 5.99868 18.6477 11.9974 24.6463 11.9974C18.6477 11.9974 12.649 17.996 12.649 23.9947C12.649 17.996 6.65029 11.9974 0.651611 11.9974Z" />
+                  </motion.svg>
+                </div>
               </div>
             </Link>
           </div>
