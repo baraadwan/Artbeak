@@ -104,7 +104,7 @@ const Services = () => {
               {/* Left - Testimonial */}
               <div className="space-y-6">
                 <div className="relative">
-                  <div className="text-8xl text-blue-400 font-bold">"</div>
+                  <div className="text-8xl text-blue-400 font-bold">&quot;</div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white text-xs uppercase tracking-wider">
                       <div>TRUSTED BY CLIENTS</div>

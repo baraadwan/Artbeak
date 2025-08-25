@@ -11,16 +11,16 @@ interface UseFormReturn<T> {
   errors: Partial<Record<keyof T, string>>;
   touched: Partial<Record<keyof T, boolean>>;
   isSubmitting: boolean;
-  handleChange: (field: keyof T, value: any) => void;
+  handleChange: (field: keyof T, value: T[keyof T]) => void;
   handleBlur: (field: keyof T) => void;
   handleSubmit: (e: React.FormEvent) => void;
-  setFieldValue: (field: keyof T, value: any) => void;
+  setFieldValue: (field: keyof T, value: T[keyof T]) => void;
   setFieldError: (field: keyof T, error: string) => void;
   resetForm: () => void;
   isValid: boolean;
 }
 
-export const useForm = <T extends Record<string, any>>({
+export const useForm = <T extends Record<string, unknown>>({
   initialValues,
   validate,
   onSubmit,
@@ -39,7 +39,7 @@ export const useForm = <T extends Record<string, any>>({
   );
 
   const handleChange = useCallback(
-    (field: keyof T, value: any) => {
+    (field: keyof T, value: T[keyof T]) => {
       setValues((prev) => ({ ...prev, [field]: value }));
 
       // Clear error when user starts typing
@@ -98,7 +98,7 @@ export const useForm = <T extends Record<string, any>>({
     [values, validate, onSubmit]
   );
 
-  const setFieldValue = useCallback((field: keyof T, value: any) => {
+  const setFieldValue = useCallback((field: keyof T, value: T[keyof T]) => {
     setValues((prev) => ({ ...prev, [field]: value }));
   }, []);
 
