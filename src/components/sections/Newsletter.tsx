@@ -52,19 +52,6 @@ const Newsletter = () => {
           </div>
           <Button className="bg-[#0047ff] hover:bg-[#1F6BFF] text-white px-6 py-3 rounded-lg">
             Subscribe
-            <svg
-              className="ml-2 w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
           </Button>
         </div>
 
