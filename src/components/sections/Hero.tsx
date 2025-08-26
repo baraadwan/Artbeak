@@ -6,6 +6,7 @@ import DarkVeil from "../ui/DarkVeil";
 import { IconBrandInstagram, IconBrandX, IconWorld } from "@tabler/icons-react";
 import CountUp from "../ui/CountUp/CountUp";
 import Image from "next/image";
+import { BoxReveal } from "../ui/magicui/box-reveal";
 
 const Hero = () => {
   return (
@@ -17,20 +18,32 @@ const Hero = () => {
             {/* Main headline */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight">
-                <span className="block">Only Pay </span>
-                <span className="inline mr-3 sm:mr-5">When you Convert</span>
-                <span className="inline text-3xl sm:text-4xl md:text-6xl italic font-normal text-gray-300 font-display">
-                  more
-                </span>
+                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                  <span className="block">Only Pay </span>
+                </BoxReveal>
+                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                  <span className="inline mr-3 sm:mr-5">When you </span>
+                </BoxReveal>
+                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                  <p>
+                    <span className="inline mr-3 sm:mr-5"> Convert</span>
+                    <span className="inline text-3xl sm:text-4xl md:text-6xl italic font-normal text-gray-300 font-display">
+                      more
+                    </span>
+                  </p>
+                </BoxReveal>
               </h1>
             </div>
 
             {/* Social Proof */}
             <div className="space-y-4 pt-6 sm:pt-8">
-              <p className="text-white text-base sm:text-lg mb-8 sm:mb-12 lg:mb-22">
-                5.0 Average Rating on <span className="underline">Google</span>
-              </p>
-
+              <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <p className="text-white text-base sm:text-lg py-1">
+                  5.0 Average Rating on{" "}
+                  <span className="underline">Google</span>
+                </p>
+              </BoxReveal>
+              <div className="  mb-7 sm:mb-10 lg:mb-20"></div>
               {/* Social Icons */}
               <div className="flex space-x-3 sm:space-x-4">
                 <a
@@ -59,17 +72,23 @@ const Hero = () => {
           <div className="space-y-6 sm:space-y-8">
             <div>
               {/* Description */}
-              <p className="text-base sm:text-lg md:text-xl text-gray-50 max-w-xl leading-relaxed">
-                A US Wyoming company based in Cairo, we are performance based,
-                risk-free website re-design agency that focus on turning normal
-                websites into conversion machines.
-              </p>
+              <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <p className="text-base sm:text-lg md:text-xl text-gray-50 max-w-xl leading-relaxed">
+                  A US Wyoming company based in Cairo, we are performance based,
+                  risk-free website re-design agency that focus on turning
+                  normal websites into conversion machines.
+                </p>
+              </BoxReveal>
 
               {/* CTA Button */}
               <div className="pt-6 sm:pt-8">
-                <Link href="/contact">
-                  <Button>Start Now</Button>
-                </Link>
+                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                  <div>
+                    <Link href="/contact">
+                      <Button>Start Now</Button>
+                    </Link>
+                  </div>
+                </BoxReveal>
               </div>
             </div>
 
