@@ -2,64 +2,57 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
   isLoading?: boolean;
 }
 
 const Button = ({
-  children,
-  variant = "primary",
-  size = "md",
   isLoading = false,
   className = "",
   disabled,
+  children,
   ...props
 }: ButtonProps) => {
-  const baseClasses =
-    "inline-flex items-center justify-center font-medium rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed";
-
-  const variantClasses = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-    secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500",
-    outline:
-      "border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white focus:ring-blue-500",
-    ghost:
-      "text-gray-300 hover:bg-gray-700 hover:text-white focus:ring-gray-500",
-  };
-
-  const sizeClasses = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-sm",
-    lg: "px-6 py-3 text-base",
-  };
-
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
-
   return (
-    <button className={classes} disabled={disabled || isLoading} {...props}>
-      {isLoading && (
+    <button
+      className={`bg-[#0047ff] hover:bg-blue-700 text-white font-normal text-2xl pl-6 pr-4 py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer mt-4 ${className}`}
+      disabled={disabled || isLoading}
+      {...props}
+    >
+      {isLoading ? "Loading..." : children}
+      <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center ml-4 transition-transform group-hover:translate-x-1">
         <svg
-          className="animate-spin -ml-1 mr-2 h-4 w-4"
+          width="29"
+          height="28"
+          viewBox="0 0 29 28"
           fill="none"
-          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 text-[#0047ff]"
         >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth={4}
-          />
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-          />
+          <mask
+            id="mask0_3302_1235"
+            style={{ maskType: "alpha" }}
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="29"
+            height="28"
+          >
+            <rect
+              x="0.887451"
+              y="0.526031"
+              width="27.2801"
+              height="27.2801"
+              fill="#D9D9D9"
+            />
+          </mask>
+          <g mask="url(#mask0_3302_1235)">
+            <path
+              d="M15.7681 22.8113C15.7851 22.8283 16.3058 22.9588 16.9251 23.1012C17.5445 23.2435 18.0579 23.3382 18.0662 23.3118C18.0744 23.2853 18.1385 22.8554 18.2085 22.3564C18.3493 21.3545 18.6901 20.1846 19.0543 19.453C20.1895 17.1728 22.2263 15.663 24.6966 15.2706L25.3257 15.1706V14.1634V13.156L24.7555 13.0603C21.0201 12.4337 18.5848 9.64063 18.1292 5.46085C18.0994 5.18792 18.0639 4.96468 18.0502 4.96468C17.9242 4.96468 15.8367 5.46776 15.7973 5.50761C15.7687 5.53643 15.79 5.7923 15.8445 6.07611C16.4486 9.21884 18.1782 11.7762 20.4226 12.8454L20.961 13.1019L9.88971 13.122L2.88892 13.1348V15.1734L9.90772 15.1861L20.9529 15.2063L20.2732 15.5507C18.5099 16.444 17.1138 18.1964 16.2917 20.5486C16.0574 21.2187 15.7039 22.7465 15.7681 22.8113Z"
+              fill="currentColor"
+            />
+          </g>
         </svg>
-      )}
-      {children}
+      </div>
     </button>
   );
 };

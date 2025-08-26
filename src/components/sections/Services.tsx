@@ -1,4 +1,17 @@
+"use client";
+
+import { Crown } from "lucide-react";
 import Card from "../ui/Card";
+import {
+  IconPalette,
+  IconBrandWebflow,
+  IconCode,
+  IconChevronLeft,
+  IconChevronRight,
+} from "@tabler/icons-react";
+import SpotlightCard from "../ui/SpotlightCard/SpotlightCard";
+import CircularText from "../ui/CircularText/CircularText";
+import { AnimatedTestimonials } from "../ui/animated-testimonials";
 
 interface Service {
   id: string;
@@ -14,14 +27,8 @@ const services: Service[] = [
     title: "Design",
     description: "We design websites, web apps, and mobile apps",
     icon: (
-      <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-        <svg
-          className="w-5 h-5 text-gray-900"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
+      <div className="w-10 h-10 bg-transparent border-[1px] border-[#c5f011]/50 rounded-full flex items-center justify-center">
+        <Crown className="w-4 h-4 text-[#c5f011]" />
       </div>
     ),
   },
@@ -30,14 +37,8 @@ const services: Service[] = [
     title: "Webflow",
     description: "We build websites using Webflow",
     icon: (
-      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-        <svg
-          className="w-5 h-5 text-white"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
+      <div className="w-10 h-10 bg-transparent border-[1px] border-[#c5f011]/50 rounded-full flex items-center justify-center">
+        <IconBrandWebflow className="w-5 h-5 text-[#c5f011]" />
       </div>
     ),
     isHighlighted: true,
@@ -47,8 +48,8 @@ const services: Service[] = [
     title: "Code",
     description: "We build web apps and websites using custom code",
     icon: (
-      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-        <span className="text-white text-sm font-bold">&lt;/&gt;</span>
+      <div className="w-10 h-10 bg-transparent border-[1px] border-[#c5f011]/50 rounded-full flex items-center justify-center">
+        <IconCode className="w-5 h-5 text-[#c5f011]" />
       </div>
     ),
   },
@@ -56,117 +57,114 @@ const services: Service[] = [
 
 const Services = () => {
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
+        <div className="mb-16">
+          <h2 className="text-5xl font-semibold mb-4">
             <span className="text-white">Our</span>
-            <span className="text-blue-400 italic"> Services</span>
+            <span className="text-[#0047ff] font-display font-[400] italic">
+              {" "}
+              Services
+            </span>
           </h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="">
+          {/* Top divider */}
+          <div className="w-full h-px bg-gray-600"></div>
+
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={`relative p-6 rounded-lg transition-all duration-300 ${
-                service.isHighlighted
-                  ? "bg-gray-800 border-l-4 border-blue-400"
-                  : "bg-gray-800"
+              className={`relative rounded-lg transition-all duration-300 ${
+                index == 1 ? "bg-[#151515]" : ""
               }`}
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-6">
-                  <h3
-                    className={`text-2xl font-bold ${
-                      service.isHighlighted ? "text-blue-400" : "text-white"
-                    }`}
-                  >
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-300 text-lg">{service.description}</p>
+              <div className="grid grid-cols-12 items-center gap-x-4  py-5">
+                <h3
+                  className={`col-span-7 text-8xl font-bold text-left ml-8 ${
+                    service.isHighlighted ? "text-[#0047ff]" : "text-white"
+                  }`}
+                >
+                  {service.title}
+                </h3>
+                <p className="col-span-2 text-gray-300 text-xs text-left">
+                  {service.description}
+                </p>
+                <div className="col-span-3 flex justify-end mr-8">
+                  {service.icon}
                 </div>
-                <div className="flex-shrink-0">{service.icon}</div>
               </div>
 
               {/* Separator line */}
-              {index < services.length - 1 && (
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-600"></div>
-              )}
+              <div className="w-full h-px bg-gray-600"></div>
             </div>
           ))}
         </div>
 
         {/* Testimonial Card */}
         <div className="mt-16">
-          <Card className="bg-gray-800 border-gray-700">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Left - Testimonial */}
-              <div className="space-y-6">
+          {/* <Card className="bg-gray-800 border-gray-700"> */}
+          <SpotlightCard
+            className="custom-spotlight-card"
+            spotlightColor="rgba(0, 71, 255, 0.2)"
+          >
+            <div className="flex gap-8">
+              <div className="flex items-center justify-between w-1/3">
                 <div className="relative">
-                  <div className="text-8xl text-blue-400 font-bold">&quot;</div>
+                  <CircularText
+                    text="TRUSTED BY CLIENTS - TESTIMONIAL "
+                    onHover="speedUp"
+                    spinDuration={20}
+                  />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-white text-xs uppercase tracking-wider">
-                      <div>TRUSTED BY CLIENTS</div>
-                      <div className="mt-2">TESTIMONIAL</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <p className="text-white text-lg leading-relaxed">
-                    &quot;Artbeak studio ability to create a high quality UI is
-                    stands out. It&apos;s something we placed a premium on. A
-                    studio with passionate, professional, fun and full
-                    creativity. Recommend!&quot;
-                  </p>
-
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gray-600 rounded-full"></div>
-                    <div>
-                      <p className="text-white font-semibold">Conor Bradley</p>
-                      <p className="text-gray-300 text-sm">
-                        Senior Marketing, Spotify
-                      </p>
-                    </div>
-                    <div className="flex items-center space-x-2 text-white">
-                      <button className="p-1 hover:text-blue-400 transition-colors">
+                    <div className="w-20 h-20 flex items-center justify-center">
+                      <div>
                         <svg
-                          className="w-4 h-4"
+                          width="100%"
+                          height="100%"
+                          viewBox="0 0 104 81"
                           fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M15 19l-7-7 7-7"
+                            d="M0.972962 18.2241C0.972962 13.492 2.83552 9.46977 6.56063 6.15732C10.2857 2.60827 14.6761 0.83374 19.7316 0.83374C21.8602 0.83374 24.1219 1.30695 26.5166 2.25336L26.1175 1.89846L28.5122 2.96317H28.9113C29.7096 3.43638 30.6408 4.02789 31.7051 4.7377C31.7051 4.9743 32.1043 5.44751 32.9025 6.15732C39.5545 12.0724 42.3483 20.945 41.284 32.7752C40.2197 49.8106 30.1087 65.1899 10.9509 78.9129C9.88663 79.8593 8.68927 80.3325 7.35887 80.3325C5.23023 80.3325 3.50072 79.5044 2.17032 77.8482C-0.224396 75.0089 0.174723 72.4063 3.36768 70.0402C19.0664 58.6833 27.5809 46.3799 28.9113 33.1301C25.9844 34.7863 22.9245 35.6144 19.7316 35.6144C14.6761 35.6144 10.2857 33.9582 6.56063 30.6458C2.83552 27.0967 0.972962 22.9562 0.972962 18.2241ZM62.8365 18.2241C62.8365 13.492 64.699 9.46977 68.4241 6.15732C72.1492 2.60827 76.5396 0.83374 81.5951 0.83374C83.7237 0.83374 85.9854 1.30695 88.3801 2.25336L87.981 1.89846C88.7792 2.13506 89.5774 2.48996 90.3757 2.96317H90.7748C91.8391 3.43638 92.7704 4.02789 93.5686 4.7377C93.5686 4.9743 93.9678 5.44751 94.766 6.15732C101.418 12.0724 104.212 20.945 103.148 32.7752C102.083 49.8106 91.9722 65.1899 72.8144 78.9129C71.7501 79.8593 70.5528 80.3325 69.2224 80.3325C67.0937 80.3325 65.4972 79.5044 64.4329 77.8482C61.7721 75.0089 62.0382 72.4063 65.2312 70.0402C80.9299 58.6833 89.4444 46.3799 90.7748 33.1301C87.8479 34.7863 84.788 35.6144 81.5951 35.6144C76.5396 35.6144 72.1492 33.9582 68.4241 30.6458C64.699 27.0967 62.8365 22.9562 62.8365 18.2241Z"
+                            fill="#0047FF"
                           />
                         </svg>
-                      </button>
-                      <span className="text-sm">1 / 3</span>
-                      <button className="p-1 hover:text-blue-400 transition-colors">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right - Partner Brands */}
+              <div className="space-y-4 w-2/3">
+                <AnimatedTestimonials
+                  // autoplay
+                  testimonials={[
+                    {
+                      name: "Conor Bradley",
+                      designation: "Senior Marketing, Spotify",
+                      quote:
+                        "Artbeak studio ability to create a high quality UI stands out. It's something we placed a premium on. A studio with passionate, professional, fun and full creativity. Recommend!",
+                    },
+                    {
+                      name: "Aisha Kumar",
+                      designation: "Product Manager, Square",
+                      quote:
+                        "They delivered fast, communicated clearly, and the final product exceeded expectations across web and mobile.",
+                    },
+                    {
+                      name: "Marco Liu",
+                      designation: "Founder, Archin",
+                      quote:
+                        "From concept to launch, the team was world-class. Pixel-perfect design paired with robust engineering.",
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+            <div className="mt-8">
               <div className="space-y-6">
                 <p className="text-lime-400 text-sm uppercase tracking-wider">
                   PARTNER WITH +150 BRANDS
@@ -192,7 +190,8 @@ const Services = () => {
                 </div>
               </div>
             </div>
-          </Card>
+          </SpotlightCard>
+          {/* </Card> */}
         </div>
       </div>
     </section>

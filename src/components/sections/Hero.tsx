@@ -3,13 +3,9 @@
 import Link from "next/link";
 import Button from "../ui/Button";
 import DarkVeil from "../ui/DarkVeil";
-import {
-  IconArrowNarrowRight,
-  IconBrandInstagram,
-  IconBrandX,
-  IconWorld,
-} from "@tabler/icons-react";
+import { IconBrandInstagram, IconBrandX, IconWorld } from "@tabler/icons-react";
 import CountUp from "../ui/CountUp/CountUp";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -63,12 +59,7 @@ const Hero = () => {
               {/* CTA Button */}
               <div className="pt-4">
                 <Link href="/contact">
-                  <button className="bg-[#0047ff] hover:bg-blue-700 text-white font-normal text-2xl pl-6 pr-4 py-3 rounded-full flex items-center justify-center transition-colors group cursor-pointer mt-4">
-                    Start Now
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center ml-4 transition-transform group-hover:translate-x-1">
-                      <IconArrowNarrowRight className="w-6 h-6 text-[#0047ff] animate-pulse group-hover:animate-none" />
-                    </div>
-                  </button>
+                  <Button>Start Now</Button>
                 </Link>
               </div>
             </div>
@@ -132,13 +123,28 @@ const Hero = () => {
           <div className="space-y-4">
             <div className="h-px bg-gray-600"></div>
             <div className="flex items-center space-x-6">
-              <div className="flex -space-x-2 ">
+              <div className="flex -space-x-3 ">
                 <div className="w-[100px] h-[100px] bg-gray-600 rounded-full border-4 border-white relative">
+                  <Image
+                    src={"/assets/images/founder1.png"}
+                    alt="founder"
+                    width={100}
+                    height={100}
+                    className="object-cover rounded-full w-full h-full overflow-hidden"
+                  />
                   <p className="text-white text-xs uppercase tracking-wider absolute -bottom-12 left-0 whitespace-nowrap">
                     FOUNDERS OF <br /> ARTBEAK
                   </p>
                 </div>
-                <div className="w-[100px] h-[100px] bg-gray-600 rounded-full border-4 border-white"></div>
+                <div className="w-[100px] h-[100px] bg-gray-600 rounded-full border-4 border-white">
+                  <Image
+                    src={"/assets/images/founder2.png"}
+                    alt="founder"
+                    width={100}
+                    height={100}
+                    className="object-cover rounded-full w-full h-full overflow-hidden"
+                  />
+                </div>
               </div>
               <div className="flex-1 ml-22">
                 <p className="text-white text-4xl font-medium">
