@@ -145,20 +145,17 @@ const Services = () => {
                     {
                       name: "Conor Bradley",
                       designation: "Senior Marketing, Spotify",
-                      quote:
-                        "Artbeak studio ability to create a high quality UI stands out. It's something we placed a premium on. A studio with passionate, professional, fun and full creativity. Recommend!",
+                      quote: `"Artbeak studio ability to create a high quality UI stands out. It's something we placed a premium on. A studio with passionate, professional, fun and full creativity. Recommend!"`,
                     },
                     {
                       name: "Aisha Kumar",
                       designation: "Product Manager, Square",
-                      quote:
-                        "They delivered fast, communicated clearly, and the final product exceeded expectations across web and mobile.",
+                      quote: `"They delivered fast, communicated clearly, and the final product exceeded expectations across web and mobile."`,
                     },
                     {
                       name: "Marco Liu",
                       designation: "Founder, Archin",
-                      quote:
-                        "From concept to launch, the team was world-class. Pixel-perfect design paired with robust engineering.",
+                      quote: ` "From concept to launch, the team was world-class. Pixel-perfect design paired with robust engineering."`,
                     },
                   ]}
                 />
