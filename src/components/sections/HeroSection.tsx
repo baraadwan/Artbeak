@@ -10,7 +10,7 @@ const HeroSection = () => {
         <img
           src="/assets/images/bg.png"
           alt=""
-          className="blur-3xl w-full h-full absolute top-0 left-0"
+          className="blur-3xl w-full max-w-[1600px] h-full absolute top-0 left-1/2 -translate-x-1/2"
         />
         <img
           src="/assets/icons/A.png"
