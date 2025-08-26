@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   isLoading?: boolean;
+  variant?: "primary" | "secondary";
 }
 
 const Button = ({
@@ -10,11 +11,17 @@ const Button = ({
   className = "",
   disabled,
   children,
+  variant = "primary",
   ...props
 }: ButtonProps) => {
+  const bgColorClass =
+    variant === "primary"
+      ? "bg-[#0047ff] hover:bg-blue-700"
+      : "bg-[#222222] hover:bg-zinc-800";
+
   return (
     <button
-      className={`bg-[#0047ff] hover:bg-blue-700 text-white font-normal text-2xl pl-6 pr-4 py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer mt-4 ${className}`}
+      className={`${bgColorClass} text-white font-normal text-2xl pl-6 pr-4 py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer ${className}`}
       disabled={disabled || isLoading}
       {...props}
     >

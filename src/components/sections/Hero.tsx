@@ -9,30 +9,30 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="relative bg-[#010208] flex items-center overflow-hidden h-screen min-h-[1000px] max-h-[1360px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full absolute inset-0 z-10 pb-16 pt-28 flex justify-center flex-col">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-22">
+    <section className="relative bg-[#010208] flex items-center overflow-hidden lg:h-[1100px] md:h-[1400px] sm:h-[1200px] h-[1200px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full absolute inset-0 z-10 pb-16 sm:pb-16 pt-20 sm:pt-24 lg:pt-28 flex justify-center flex-col">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-10 sm:mb-16 lg:mb-22">
           {/* Left Column - Main Content */}
           <div className="space-y-8">
             {/* Main headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight">
                 <span className="block">Only Pay </span>
-                <span className="inline mr-5">When you Convert</span>
-                <span className="inline text-4xl md:text-6xl italic font-normal text-gray-300 font-display">
+                <span className="inline mr-3 sm:mr-5">When you Convert</span>
+                <span className="inline text-3xl sm:text-4xl md:text-6xl italic font-normal text-gray-300 font-display">
                   more
                 </span>
               </h1>
             </div>
 
             {/* Social Proof */}
-            <div className="space-y-4 pt-8">
-              <p className="text-white text-lg mb-22">
+            <div className="space-y-4 pt-6 sm:pt-8">
+              <p className="text-white text-base sm:text-lg mb-8 sm:mb-12 lg:mb-22">
                 5.0 Average Rating on <span className="underline">Google</span>
               </p>
 
               {/* Social Icons */}
-              <div className="flex space-x-4">
+              <div className="flex space-x-3 sm:space-x-4">
                 <a
                   href="https://x.com/"
                   className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
@@ -56,17 +56,17 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Description, CTA & Stats */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div>
               {/* Description */}
-              <p className="text-xl text-gray-50 max-w-lg leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-50 max-w-xl leading-relaxed">
                 A US Wyoming company based in Cairo, we are performance based,
                 risk-free website re-design agency that focus on turning normal
                 websites into conversion machines.
               </p>
 
               {/* CTA Button */}
-              <div className="pt-4">
+              <div className="pt-6 sm:pt-8">
                 <Link href="/contact">
                   <Button>Start Now</Button>
                 </Link>
@@ -74,12 +74,12 @@ const Hero = () => {
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-gray-600 mt-28"></div>
+            <div className="h-px bg-gray-600 mt-10 md:mt-20 lg:mt-28"></div>
 
             {/* Key Statistics */}
-            <div className="grid grid-cols-2 gap-8 ">
+            <div className="grid grid-cols-2 gap-6 sm:gap-8 ">
               <div className="text-left">
-                <div className="text-7xl font-semibold text-lime-400 mb-2">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-lime-400 mb-2">
                   {/* 95% */}
                   <CountUp
                     from={0}
@@ -91,12 +91,12 @@ const Hero = () => {
                   />
                   %
                 </div>
-                <div className="text-white text-sm leading-tight">
+                <div className="text-white text-xs sm:text-sm leading-tight">
                   CLIENTS SATISFIED AND <br /> REPEATING
                 </div>
               </div>
               <div className="text-left">
-                <div className="text-7xl font-semibold text-lime-400 mb-2">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-lime-400 mb-2">
                   <CountUp
                     from={0}
                     to={47}
@@ -107,7 +107,7 @@ const Hero = () => {
                   />
                   +
                 </div>
-                <div className="text-white text-sm leading-tight">
+                <div className="text-white text-xs sm:text-sm leading-tight">
                   PROJECTS COMPLETED IN <br /> 6 COUNTRIES
                 </div>
               </div>
@@ -116,10 +116,10 @@ const Hero = () => {
         </div>
 
         {/* Bottom Section - Guarantees & Founders */}
-        <div className="mt-16 space-y-8">
+        <div className="mt-10 sm:mt-16 space-y-6 sm:space-y-8">
           {/* Guarantees */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between text-white text-3xl font-medium">
+            <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4 text-white text-xl sm:text-2xl lg:text-3xl font-medium">
               <span>Refund Guaranteed</span>
               <div className="w-2 h-2 bg-white rounded-full"></div>
               <span>100% Risk Free</span>
@@ -131,9 +131,9 @@ const Hero = () => {
           {/* Founders Section */}
           <div className="space-y-4">
             <div className="h-px bg-gray-600"></div>
-            <div className="flex items-center space-x-6">
-              <div className="flex -space-x-3 ">
-                <div className="w-[100px] h-[100px] bg-gray-600 rounded-full border-4 border-white relative">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-14 sm:space-y-0">
+              <div className="flex -space-x-2 sm:-space-x-3 ">
+                <div className="w-16 h-16 md:w-24 md:h-24 lg:w-[100px] lg:h-[100px] bg-gray-600 rounded-full border-4 border-white relative">
                   <Image
                     src={"/assets/images/founder1.png"}
                     alt="founder"
@@ -141,11 +141,11 @@ const Hero = () => {
                     height={100}
                     className="object-cover rounded-full w-full h-full overflow-hidden"
                   />
-                  <p className="text-white text-xs uppercase tracking-wider absolute -bottom-12 left-0 whitespace-nowrap">
+                  <p className="text-white text-[10px] sm:text-xs uppercase tracking-wider absolute -bottom-10 sm:-bottom-12 left-0 whitespace-nowrap">
                     FOUNDERS OF <br /> ARTBEAK
                   </p>
                 </div>
-                <div className="w-[100px] h-[100px] bg-gray-600 rounded-full border-4 border-white">
+                <div className="w-16 h-16 md:w-24 md:h-24 lg:w-[100px] lg:h-[100px] bg-gray-600 rounded-full border-4 border-white">
                   <Image
                     src={"/assets/images/founder2.png"}
                     alt="founder"
@@ -155,8 +155,8 @@ const Hero = () => {
                   />
                 </div>
               </div>
-              <div className="flex-1 ml-22">
-                <p className="text-white text-4xl font-medium">
+              <div className="flex-1 sm:ml-10 lg:ml-22">
+                <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium">
                   We help business redesign their normal websites and turn them
                   into conversion machines risk free.
                 </p>

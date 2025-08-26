@@ -84,35 +84,37 @@ export const AnimatedTestimonials = ({
             ))}
           </motion.p>
         </motion.div>
-        <div className="h-[1px] w-full bg-neutral-800 my-4"></div>
-        <div className="flex gap-4 pt-12 md:pt-0 justify-between">
-          <div className="flex items-center">
-            <div className="w-10 h-10 rounded-full bg-[#c4c4c4] mr-4"></div>
-            <div>
-              <h3 className="text-lg font-bold text-white">
-                {testimonials[active].name}
-              </h3>
-              <p className="text-xs text-[#c4c4c4]">
-                {testimonials[active].designation}
-              </p>
+        <div>
+          <div className="h-[1px] w-full bg-neutral-800 my-4"></div>
+          <div className="flex gap-4 pt-12 md:pt-0 justify-between">
+            <div className="flex items-center">
+              <div className="w-10 h-10 rounded-full bg-[#c4c4c4] mr-4"></div>
+              <div>
+                <h3 className="text-lg font-bold text-white">
+                  {testimonials[active].name}
+                </h3>
+                <p className="text-xs text-[#c4c4c4]">
+                  {testimonials[active].designation}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center justify-between bg-neutral-900/5 rounded-full px-4 py-2 border border-neutral-800 h-[36px] w-[158px]">
-            <button
-              onClick={handlePrev}
-              className="group/button flex items-center justify-center w-8 h-8 "
-            >
-              <ChevronLeft className="h-5 w-5 text-neutral-400 transition-transform duration-300 group-hover/button:text-white" />
-            </button>
-            <span className="text-neutral-400">
-              {active + 1} / {testimonials.length}
-            </span>
-            <button
-              onClick={handleNext}
-              className="group/button flex items-center justify-center w-8 h-8 "
-            >
-              <ChevronRight className="h-5 w-5 text-neutral-400 transition-transform duration-300 group-hover/button:text-white" />
-            </button>
+            <div className="flex items-center justify-between bg-neutral-900/5 rounded-full px-4 py-2 border border-neutral-800 h-[36px] w-[158px]">
+              <button
+                onClick={handlePrev}
+                className="group/button flex items-center justify-center w-8 h-8 "
+              >
+                <ChevronLeft className="h-5 w-5 text-neutral-400 transition-transform duration-300 group-hover/button:text-white" />
+              </button>
+              <span className="text-neutral-400">
+                {active + 1} / {testimonials.length}
+              </span>
+              <button
+                onClick={handleNext}
+                className="group/button flex items-center justify-center w-8 h-8 "
+              >
+                <ChevronRight className="h-5 w-5 text-neutral-400 transition-transform duration-300 group-hover/button:text-white" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

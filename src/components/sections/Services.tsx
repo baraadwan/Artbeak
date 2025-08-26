@@ -1,14 +1,8 @@
 "use client";
 
 import { Crown } from "lucide-react";
-import Card from "../ui/Card";
-import {
-  IconPalette,
-  IconBrandWebflow,
-  IconCode,
-  IconChevronLeft,
-  IconChevronRight,
-} from "@tabler/icons-react";
+import Image from "next/image";
+import { IconBrandWebflow, IconCode } from "@tabler/icons-react";
 import SpotlightCard from "../ui/SpotlightCard/SpotlightCard";
 import CircularText from "../ui/CircularText/CircularText";
 import { AnimatedTestimonials } from "../ui/AnimatedTestimonials";
@@ -57,10 +51,10 @@ const services: Service[] = [
 
 const Services = () => {
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16">
-          <h2 className="text-5xl font-semibold mb-4">
+        <div className="mb-10 sm:mb-14 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 leading-tight">
             <span className="text-white">Our</span>
             <span className="text-[#0047ff] font-display font-[400] italic">
               {" "}
@@ -80,18 +74,18 @@ const Services = () => {
                 index == 1 ? "bg-[#151515]" : ""
               }`}
             >
-              <div className="grid grid-cols-12 items-center gap-x-4  py-5">
+              <div className="grid grid-cols-12 items-center gap-x-4 gap-y-3 py-5">
                 <h3
-                  className={`col-span-7 text-8xl font-bold text-left ml-8 ${
+                  className={`col-span-12 md:col-span-7 text-4xl sm:text-6xl lg:text-8xl font-bold text-left ml-0 md:ml-8 ${
                     service.isHighlighted ? "text-[#0047ff]" : "text-white"
                   }`}
                 >
                   {service.title}
                 </h3>
-                <p className="col-span-2 text-gray-300 text-xs text-left">
+                <p className="col-span-12 md:col-span-2 text-gray-300 text-xs sm:text-sm text-left">
                   {service.description}
                 </p>
-                <div className="col-span-3 flex justify-end mr-8">
+                <div className="col-span-12 md:col-span-3 flex justify-start md:justify-end mr-0 md:mr-8 mt-2 md:mt-0">
                   {service.icon}
                 </div>
               </div>
@@ -103,14 +97,14 @@ const Services = () => {
         </div>
 
         {/* Testimonial Card */}
-        <div className="mt-16 relative">
+        <div className="mt-12 sm:mt-14 lg:mt-16 relative">
           {/* <Card className="bg-gray-800 border-gray-700"> */}
           <SpotlightCard
             className="custom-spotlight-card z-50"
             spotlightColor="rgba(0, 71, 255, 0.2)"
           >
-            <div className="flex gap-8">
-              <div className="flex items-center justify-between w-1/3">
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="flex items-center justify-center md:justify-between w-full md:w-1/3">
                 <div className="relative mb-12">
                   <CircularText
                     text="TRUSTED BY CLIENTS - TESTIMONIAL - "
@@ -118,7 +112,7 @@ const Services = () => {
                     spinDuration={20}
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 flex items-center justify-center">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
                       <div>
                         <svg
                           width="100%"
@@ -138,7 +132,7 @@ const Services = () => {
                 </div>
               </div>
 
-              <div className="space-y-4 w-2/3">
+              <div className="space-y-4 w-full md:w-2/3">
                 <AnimatedTestimonials
                   // autoplay
                   testimonials={[
@@ -171,27 +165,23 @@ const Services = () => {
                   PARTNER WITH +150 BRANDS
                 </p>
 
-                <div className="grid grid-cols-5 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {[
-                    "/assets/icons/logo_zm.png",
-                    "/assets/icons/Github_logo.png",
-                    "/assets/icons/logo_mathew.png",
-                    "/assets/icons/archin.png",
-                    "/assets/icons/Symbol.png",
+                    "/assets/icons/companys/inhub.png",
+                    "/assets/icons/companys/excelsior_icon.png",
+                    "/assets/icons/companys/forum.png",
+                    "/assets/icons/companys/tictag.png",
+                    "/assets/icons/companys/snaprent.png",
                   ].map((brand, index) => (
                     <div
                       key={index}
-                      className="w-full h-32 border border-[#494949] rounded-full flex items-center justify-center"
+                      className="w-full h-20 sm:h-24 md:h-28 lg:h-32 border border-[#494949] rounded-full flex items-center justify-center"
                     >
-                      <div className="w-22 h-22 flex items-center justify-center">
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 relative flex items-center justify-center">
                         <img
                           src={brand}
                           alt=""
-                          className={` object-contain ${
-                            index == 4 || index == 1
-                              ? "w-10 h-10"
-                              : "w-full h-full"
-                          }`}
+                          className={` object-contain w-full h-full`}
                         />
                       </div>
                     </div>

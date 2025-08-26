@@ -14,3 +14,5 @@ export { default as HeroSection } from "./sections/HeroSection";
 export { default as FeaturedWork } from "./sections/FeaturedWork";
 export { default as Services } from "./sections/Services";
 export { default as FAQ } from "./sections/FAQ";
+export { default as Pricing } from "./sections/Pricing";
+export { default as Newsletter } from "./sections/Newsletter";
