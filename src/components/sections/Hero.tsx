@@ -18,13 +18,13 @@ const Hero = () => {
             {/* Main headline */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight">
-                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <BoxReveal boxColor="#0047ff" duration={0.5}>
                   <span className="block">Only Pay </span>
                 </BoxReveal>
-                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <BoxReveal boxColor="#0047ff" duration={0.5}>
                   <span className="inline mr-3 sm:mr-5">When you </span>
                 </BoxReveal>
-                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <BoxReveal boxColor="#0047ff" duration={0.5}>
                   <p>
                     <span className="inline mr-3 sm:mr-5"> Convert</span>
                     <span className="inline text-3xl sm:text-4xl md:text-6xl italic font-normal text-gray-300 font-display">
@@ -37,7 +37,7 @@ const Hero = () => {
 
             {/* Social Proof */}
             <div className="space-y-4 pt-6 sm:pt-8">
-              <BoxReveal boxColor="#5046e6" duration={0.5}>
+              <BoxReveal boxColor="#0047ff" duration={0.5}>
                 <p className="text-white text-base sm:text-lg py-1">
                   5.0 Average Rating on{" "}
                   <span className="underline">Google</span>
@@ -72,7 +72,7 @@ const Hero = () => {
           <div className="space-y-6 sm:space-y-8">
             <div>
               {/* Description */}
-              <BoxReveal boxColor="#5046e6" duration={0.5}>
+              <BoxReveal boxColor="#0047ff" duration={0.5}>
                 <p className="text-base sm:text-lg md:text-xl text-gray-50 max-w-xl leading-relaxed">
                   A US Wyoming company based in Cairo, we are performance based,
                   risk-free website re-design agency that focus on turning
@@ -82,7 +82,7 @@ const Hero = () => {
 
               {/* CTA Button */}
               <div className="pt-6 sm:pt-8">
-                <BoxReveal boxColor="#5046e6" duration={0.5}>
+                <BoxReveal boxColor="#0047ff" duration={0.5}>
                   <div>
                     <Link href="/contact">
                       <Button>Start Now</Button>
