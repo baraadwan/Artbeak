@@ -184,7 +184,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <DarkVeil />
+      <DarkVeil hueShift={24} />
     </section>
   );
 };
