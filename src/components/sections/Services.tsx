@@ -11,7 +11,7 @@ import {
 } from "@tabler/icons-react";
 import SpotlightCard from "../ui/SpotlightCard/SpotlightCard";
 import CircularText from "../ui/CircularText/CircularText";
-import { AnimatedTestimonials } from "../ui/animated-testimonials";
+import { AnimatedTestimonials } from "../ui/AnimatedTestimonials";
 
 interface Service {
   id: string;
@@ -103,15 +103,15 @@ const Services = () => {
         </div>
 
         {/* Testimonial Card */}
-        <div className="mt-16">
+        <div className="mt-16 relative">
           {/* <Card className="bg-gray-800 border-gray-700"> */}
           <SpotlightCard
-            className="custom-spotlight-card"
+            className="custom-spotlight-card z-50"
             spotlightColor="rgba(0, 71, 255, 0.2)"
           >
             <div className="flex gap-8">
               <div className="flex items-center justify-between w-1/3">
-                <div className="relative">
+                <div className="relative mb-12">
                   <CircularText
                     text="TRUSTED BY CLIENTS - TESTIMONIAL "
                     onHover="speedUp"
@@ -146,48 +146,62 @@ const Services = () => {
                       name: "Conor Bradley",
                       designation: "Senior Marketing, Spotify",
                       quote: `"Artbeak studio ability to create a high quality UI stands out. It's something we placed a premium on. A studio with passionate, professional, fun and full creativity. Recommend!"`,
+                      src: "",
                     },
                     {
                       name: "Aisha Kumar",
                       designation: "Product Manager, Square",
                       quote: `"They delivered fast, communicated clearly, and the final product exceeded expectations across web and mobile."`,
+                      src: "",
                     },
                     {
                       name: "Marco Liu",
                       designation: "Founder, Archin",
                       quote: ` "From concept to launch, the team was world-class. Pixel-perfect design paired with robust engineering."`,
+                      src: "",
                     },
                   ]}
                 />
               </div>
             </div>
-            <div className="mt-8">
-              <div className="space-y-6">
+
+            <div className="mt-18">
+              <div className="space-y-8">
                 <p className="text-lime-400 text-sm uppercase tracking-wider">
                   PARTNER WITH +150 BRANDS
                 </p>
 
                 <div className="grid grid-cols-5 gap-4">
                   {[
-                    "ZUMAR CONS",
-                    "GitHub",
-                    "mathew coo.",
-                    "archin",
-                    "Square",
+                    "/assets/icons/logo_zm.png",
+                    "/assets/icons/Github_logo.png",
+                    "/assets/icons/logo_mathew.png",
+                    "/assets/icons/archin.png",
+                    "/assets/icons/Symbol.png",
                   ].map((brand, index) => (
                     <div
                       key={index}
-                      className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center"
+                      className="w-full h-32 border border-[#494949] rounded-full flex items-center justify-center"
                     >
-                      <span className="text-white text-xs text-center font-medium">
-                        {brand}
-                      </span>
+                      <div className="w-22 h-22 flex items-center justify-center">
+                        <img
+                          src={brand}
+                          alt=""
+                          className={` object-contain ${
+                            index == 4 || index == 1
+                              ? "w-10 h-10"
+                              : "w-full h-full"
+                          }`}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
           </SpotlightCard>
+          <div className="absolute inset-0 bg-[#171717] opacity-90 rounded-2xl z-20 transform translate-y-4 scale-[0.97]"></div>
+          <div className="absolute inset-0 bg-[#171717] opacity-40 rounded-2xl z-10 transform translate-y-8 scale-[0.94]"></div>
           {/* </Card> */}
         </div>
       </div>

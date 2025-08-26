@@ -33,15 +33,24 @@ const Hero = () => {
 
               {/* Social Icons */}
               <div className="flex space-x-4">
-                <div className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white">
+                <a
+                  href="https://x.com/"
+                  className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
+                >
                   <IconBrandX className="w-5 h-5 text-black" />
-                </div>
-                <div className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white">
+                </a>
+                <a
+                  href="https://www.instagram.com/"
+                  className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
+                >
                   <IconBrandInstagram className="w-5 h-5 text-black" />
-                </div>
-                <div className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white">
+                </a>
+                <a
+                  href=""
+                  className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
+                >
                   <IconWorld className="w-5 h-5 text-black" />
-                </div>
+                </a>
               </div>
             </div>
           </div>
