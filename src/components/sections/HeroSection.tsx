@@ -1,89 +1,69 @@
 "use client";
 
 import Button from "../ui/Button";
+import CircularText from "../ui/CircularText/CircularText";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-white via-blue-500 to-black overflow-hidden">
-      {/* Abstract Shapes */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Main teardrop shape */}
-        <div className="absolute right-0 top-1/4 w-96 h-96 bg-blue-200 rounded-full opacity-20 blur-3xl transform rotate-12"></div>
-        {/* Bottom circular shape */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-gray-800 rounded-full opacity-30"></div>
-        {/* Right curved shape */}
-        <div className="absolute right-0 top-0 w-64 h-64 bg-blue-600 rounded-full opacity-20 blur-2xl"></div>
+    <div className="relative overflow-hidden">
+      <div>
+        <img
+          src="/assets/images/bg.png"
+          alt=""
+          className="blur-3xl w-full h-full absolute top-0 left-0"
+        />
+        <img
+          src="/assets/icons/A.png"
+          alt=""
+          className="w-[460px] absolute bottom-6 left-1/2 transform -translate-x-1/2 opacity-5 "
+        />
       </div>
-
-      {/* Content */}
-      <div className="relative z-10 flex items-center min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 flex items-center py-28 max-w-7xl mx-auto">
+        <div className=" px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-2xl">
             {/* Top text */}
-            <div className="mb-6">
-              <span className="text-gray-600 text-lg font-medium">
+            <div className="mb-28">
+              <span className="text-[#8b94b2] text-lg font-normal">
                 Ready to
               </span>
-              <span className="text-yellow-400 text-lg font-bold ml-2">
+              <span className="text-[#c5f011] text-lg font-normal ml-2">
                 elevate
               </span>
-              <span className="text-gray-600 text-lg font-medium ml-2">
+              <br />
+              <span className="text-[#c5f011] text-lg font-normal">
                 your brand?
               </span>
             </div>
 
             {/* Main heading */}
             <div className="mb-8">
-              <p className="text-gray-300 text-xl font-light mb-2">
+              <p className="text-[#828285] text-5xl italic font-normal -mb-2">
                 Let&apos;s start
               </p>
-              <h1 className="text-6xl lg:text-7xl font-bold text-white leading-tight">
-                <span className="block">Your</span>
-                <span className="block italic font-serif">Project</span>
+              <h1 className="text-8xl font-normal text-white leading-tight">
+                <span className="font-bold mr-3">Your</span>
+                <span className=" italic font-display font-normal">
+                  Project
+                </span>
               </h1>
             </div>
 
             {/* CTA Button */}
-            <Button
-              onClick={() => {}}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg font-medium rounded-lg flex items-center gap-3 group"
-            >
-              Start Now
-              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                <svg
-                  className="w-3 h-3 text-blue-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
-            </Button>
+            <Button onClick={() => {}}>Start Now</Button>
           </div>
         </div>
-      </div>
-
-      {/* Award Badge */}
-      <div className="absolute bottom-8 right-8 w-32 h-32 bg-gray-900 bg-opacity-50 rounded-full flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-yellow-400 text-xs font-bold mb-1">
-            AWARD WINNING
-          </div>
-          <div className="text-yellow-400 text-xs font-bold">AGENCY</div>
-          <div className="text-yellow-400 text-xs font-bold mt-1">
-            SINCE 2022
-          </div>
-          <div className="flex justify-center mt-2">
-            <div className="w-2 h-2 bg-yellow-400 rounded-full mx-1"></div>
-            <div className="w-2 h-2 bg-yellow-400 rounded-full mx-1"></div>
-            <div className="w-2 h-2 bg-yellow-400 rounded-full mx-1"></div>
-          </div>
+        <div className="absolute bottom-32 right-8 w-[175px] h-[175px] bg-white/10 border bg-opacity-50 rounded-full flex items-center justify-center">
+          <CircularText
+            text="AWARD WINNING AGENCY - SINCE 2020 - "
+            onHover="speedUp"
+            spinDuration={20}
+            size="small"
+          />
+          <img
+            src="/assets/icons/Union.png"
+            alt=""
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          />
         </div>
       </div>
     </div>

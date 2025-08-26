@@ -113,7 +113,7 @@ const Services = () => {
               <div className="flex items-center justify-between w-1/3">
                 <div className="relative mb-12">
                   <CircularText
-                    text="TRUSTED BY CLIENTS - TESTIMONIAL "
+                    text="TRUSTED BY CLIENTS - TESTIMONIAL - "
                     onHover="speedUp"
                     spinDuration={20}
                   />

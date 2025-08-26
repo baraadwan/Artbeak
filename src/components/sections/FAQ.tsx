@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Minus, Plus } from "lucide-react";
 
 interface FAQItem {
   id: string;
@@ -12,7 +14,8 @@ const faqItems: FAQItem[] = [
   {
     id: "1",
     question: "Why's Hubfolio instead of full-time designer?",
-    answer: "",
+    answer:
+      "Hubfolio offers flexibility and cost-effectiveness compared to hiring a full-time designer. You get access to our entire team's expertise without the overhead of salary, benefits, and training costs.",
   },
   {
     id: "2",
@@ -23,22 +26,38 @@ const faqItems: FAQItem[] = [
   {
     id: "3",
     question: "What's the Hubfolio progress like?",
-    answer: "",
+    answer:
+      "Our process is streamlined for efficiency. We start with a discovery call, gather your requirements, create initial concepts, refine based on your feedback, and deliver final designs with all necessary assets and documentation.",
   },
   {
     id: "4",
     question: "In which program do you create designs?",
-    answer: "",
+    answer:
+      "We primarily work with industry-standard tools like Figma, Adobe Creative Suite, and Sketch. We can adapt to your preferred platform if you have specific requirements.",
   },
   {
     id: "5",
     question: "What if i don't like design?",
-    answer: "",
+    answer:
+      "We believe in getting it right. If you're not satisfied with the initial designs, we offer revision rounds to ensure the final product meets your expectations and business goals.",
   },
   {
     id: "6",
     question: "Are there any refunds?",
-    answer: "",
+    answer:
+      "We offer a satisfaction guarantee. If you're completely unsatisfied with our work and we cannot resolve the issues through revisions, we have a partial refund policy detailed in our service agreement.",
+  },
+  {
+    id: "7",
+    question: "Are there any refunds?",
+    answer:
+      "We offer a satisfaction guarantee. If you're completely unsatisfied with our work and we cannot resolve the issues through revisions, we have a partial refund policy detailed in our service agreement.",
+  },
+  {
+    id: "8",
+    question: "Are there any refunds?",
+    answer:
+      "We offer a satisfaction guarantee. If you're completely unsatisfied with our work and we cannot resolve the issues through revisions, we have a partial refund policy detailed in our service agreement.",
   },
 ];
 
@@ -50,18 +69,21 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold">
+          <h2 className="text-5xl font-semibold">
             <span className="text-white">Ask Us</span>
-            <span className="text-blue-400 italic"> Anything</span>
+            <span className="text-[#0047ff] font-display italic font-normal">
+              {" "}
+              Anything
+            </span>
           </h2>
         </div>
 
         {/* FAQ Items */}
-        <div className="space-y-4">
+        <div className="space-y-1.5">
           {faqItems.map((item) => {
             const isOpen = openItem === item.id;
 
@@ -69,12 +91,12 @@ const FAQ = () => {
               <div
                 key={item.id}
                 className={`rounded-lg transition-all duration-300 ${
-                  isOpen ? "bg-blue-600" : "bg-gray-800 hover:bg-gray-700"
+                  isOpen ? "bg-blue-600" : "bg-[#151515] hover:bg-[#1a1a1a]"
                 }`}
               >
                 <button
                   onClick={() => toggleItem(item.id)}
-                  className="w-full p-6 text-left flex items-center justify-between"
+                  className="w-full p-6 text-left flex items-center justify-between cursor-pointer"
                 >
                   <span
                     className={`text-lg font-medium ${
@@ -87,46 +109,41 @@ const FAQ = () => {
                   <div className="flex-shrink-0">
                     {isOpen ? (
                       <div className="w-6 h-6 text-white">
-                        <svg
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M20 12H4"
-                          />
-                        </svg>
+                        <Minus className="w-6 h-6" />
                       </div>
                     ) : (
-                      <div className="w-6 h-6 text-yellow-400">
-                        <svg
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 4v16m8-8H4"
-                          />
-                        </svg>
+                      <div className="w-6 h-6 text-[#c5f011]">
+                        <Plus className="w-6 h-6" />
                       </div>
                     )}
                   </div>
                 </button>
 
                 {/* Answer */}
-                {isOpen && item.answer && (
-                  <div className="px-6 pb-6">
-                    <p className="text-white text-base leading-relaxed">
-                      {item.answer}
-                    </p>
-                  </div>
-                )}
+                <AnimatePresence initial={false}>
+                  {isOpen && item.answer && (
+                    <motion.div
+                      key="answer"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      style={{ overflow: "hidden" }}
+                    >
+                      <div className="px-6 pb-6">
+                        <motion.p
+                          className="text-white text-base leading-relaxed"
+                          initial={{ y: -4, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -4, opacity: 0 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                        >
+                          {item.answer}
+                        </motion.p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}

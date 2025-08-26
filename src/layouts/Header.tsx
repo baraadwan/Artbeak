@@ -30,7 +30,7 @@ const Header = () => {
                 <span className="text-white text-5xl font-bold">A</span>
                 <div className="w-5 h-5 relative">
                   <motion.svg
-                    className="absolute -top-3 -right-2 w-5 h-6 text-yellow-300"
+                    className="absolute -top-3 -right-2 w-5 h-6 text-[#c5f011]"
                     fill="currentColor"
                     viewBox="0 0 25 24"
                     style={{ originX: 0.5, originY: 0.5 }}
