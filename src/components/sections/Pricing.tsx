@@ -117,7 +117,9 @@ const Pricing = () => {
             </button>
             <button className="px-4 py-1.5 text-sm rounded-full bg-[#0047ff] text-white">
               Yearly{" "}
-              <span className="ml-1 rounded-full bg-white/20 px-2">-20%</span>
+              <span className="ml-1 py-[1px] rounded-full bg-white text-black px-1">
+                -20%
+              </span>
             </button>
           </div>
         </div>
