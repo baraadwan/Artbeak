@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import Button from "../ui/Button";
+import { motion } from "framer-motion";
 
 const features = [
   "Design & Development files",
@@ -124,12 +127,17 @@ const Pricing = () => {
           {tiers.map((tier) => (
             <div
               key={`mobile-${tier.name}`}
-              className={`rounded-3xl bg-zinc-950/60 backdrop-blur-sm ${
+              className={`relative rounded-3xl bg-zinc-950/60 backdrop-blur-sm ${
                 tier.highlight
                   ? "ring-1 ring-blue-500/50 shadow-[0_0_60px_-15px_rgba(59,130,246,0.6)]"
                   : ""
               }`}
             >
+              {tier.highlight && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-[#0047ff] rounded-full">
+                  <span className="relative z-10 text-sm">Best Choice</span>
+                </div>
+              )}
               <div className="p-6">
                 <p className="uppercase tracking-widest text-xs text-zinc-400">
                   {tier.name}
@@ -171,22 +179,36 @@ const Pricing = () => {
         </div>
 
         {/* Desktop/tablet: table-like grid */}
-        <div className="hidden md:block ">
+        <div className="hidden md:block overflow-auto">
           <div className="min-w-[880px] grid grid-cols-4">
             {/* Header Row */}
             <div className="col-span-1 p-8 border-b border-white/10 flex items-center gap-3">
-              <StarIcon />
-              <span className="text-zinc-300">Features</span>
+              <motion.svg
+                className="w-16 h-16 text-[#c5f011]"
+                fill="currentColor"
+                viewBox="0 0 25 24"
+                style={{ originX: 0.5, originY: 0.5 }}
+                animate={{ rotate: [0, 360], scale: [1, 0.92, 1.06, 1] }}
+                transition={{
+                  duration: 2,
+                  ease: "linear",
+                  repeat: Infinity,
+                  repeatDelay: 0.5,
+                  times: [0, 0.4, 0.65, 1],
+                }}
+              >
+                <path d="M0.651611 11.9974C6.65029 11.9974 12.649 5.99868 12.649 0C12.649 5.99868 18.6477 11.9974 24.6463 11.9974C18.6477 11.9974 12.649 17.996 12.649 23.9947C12.649 17.996 6.65029 11.9974 0.651611 11.9974Z" />
+              </motion.svg>
             </div>
             {tiers.map((tier) => (
               <div
                 key={`head-${tier.name}`}
-                className={`relative p-8 border-b border-white/10 flex flex-col items-center text-center ${
+                className={`relative p-6 pt-10 border-b border-white/10 flex flex-col items-center text-center ${
                   tier.highlight ? "bg-white/10 rounded-t-3xl" : ""
                 }`}
               >
                 {tier.highlight && (
-                  <div className="absolute -top-3 px-3 py-1 bg-[#0047ff] rounded-full">
+                  <div className="absolute right-0 top-0 px-3 py-1 bg-[#0047ff] rounded-tr-2xl rounded-tl-0 rounded-bl-2xl">
                     <span className="relative z-10 text-sm">Best Choice</span>
                   </div>
                 )}
@@ -206,7 +228,7 @@ const Pricing = () => {
             {/* Feature Rows */}
             {features.map((feature, rowIndex) => (
               <React.Fragment key={`row-${feature}`}>
-                <div className="col-span-1 px-8 py-4 text-sm border-b border-white/10 flex items-center">
+                <div className="col-span-1 px-6 py-4 text-sm border-b border-white/10 flex items-center">
                   <span className="text-zinc-300">{feature}</span>
                 </div>
                 {tiers.map((tier) => (

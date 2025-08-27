@@ -134,7 +134,7 @@ const Services = () => {
 
               <div className="space-y-4 w-full md:w-2/3">
                 <AnimatedTestimonials
-                  // autoplay
+                  autoplay
                   testimonials={[
                     {
                       name: "Conor Bradley",
