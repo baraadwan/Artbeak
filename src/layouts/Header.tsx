@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -20,14 +31,31 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-transparent absolute top-0 left-0 right-0 z-50">
+    <header
+      className={`sticky top-0 left-0 right-0 z-[99] transition-colors ${
+        isScrolled
+          ? "bg-[#000000]/70 backdrop-blur-md border-b border-gray-800"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <span className="text-white text-5xl font-bold">A</span>
+              <div className="w-16 h-16 flex items-center justify-center">
+                <svg
+                  width="41"
+                  height="34"
+                  viewBox="0 0 41 34"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M29.9509 24.8835H10.3348L6.23662 33.0799H0.0663058L17.0577 0.340383H22.9978L40.2654 33.0799H34.1872L29.9509 24.8835ZM20.0047 5.5437L12.6832 20.1867H27.5564L20.0047 5.5437Z"
+                    fill="white"
+                  />
+                </svg>
                 <div className="w-5 h-5 relative">
                   <motion.svg
                     className="absolute -top-3 -right-2 w-5 h-6 text-[#c5f011]"

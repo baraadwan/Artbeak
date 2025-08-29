@@ -1,7 +1,6 @@
 "use client";
 
 import { Crown } from "lucide-react";
-import Image from "next/image";
 import { IconBrandWebflow, IconCode } from "@tabler/icons-react";
 import SpotlightCard from "../ui/SpotlightCard/SpotlightCard";
 import CircularText from "../ui/CircularText/CircularText";
@@ -12,7 +11,6 @@ interface Service {
   title: string;
   description: string;
   icon: React.ReactNode;
-  isHighlighted?: boolean;
 }
 
 const services: Service[] = [
@@ -35,7 +33,6 @@ const services: Service[] = [
         <IconBrandWebflow className="w-5 h-5 text-[#c5f011]" />
       </div>
     ),
-    isHighlighted: true,
   },
   {
     id: "code",
@@ -67,18 +64,14 @@ const Services = () => {
           {/* Top divider */}
           <div className="w-full h-px bg-gray-600"></div>
 
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
               key={service.id}
-              className={`relative rounded-lg transition-all duration-300 ${
-                index == 1 ? "bg-[#151515]" : ""
-              }`}
+              className={`relative rounded-lg transition-all duration-300 group hover:bg-[#151515]`}
             >
               <div className="grid grid-cols-12 items-center gap-x-4 gap-y-3 py-5">
                 <h3
-                  className={`col-span-12 md:col-span-7 text-4xl sm:text-6xl lg:text-8xl font-bold text-left ml-0 md:ml-8 ${
-                    service.isHighlighted ? "text-[#0047ff]" : "text-white"
-                  }`}
+                  className={`col-span-12 md:col-span-7 text-4xl sm:text-6xl lg:text-8xl font-bold text-left ml-0 md:ml-8 text-white group-hover:text-[#0047ff] transition-colors`}
                 >
                   {service.title}
                 </h3>

@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../ui/Button";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const features = [
   "Design & Development files",
@@ -83,20 +84,44 @@ const CheckIcon = () => (
   </svg>
 );
 
-const StarIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="h-6 w-6 text-emerald-400"
-  >
-    <path d="M11.48 3.5c.2-.58.84-.58 1.04 0l1.62 4.7c.09.27.34.46.62.49l4.94.42c.6.05.84.81.38 1.2l-3.76 3.14c-.22.18-.31.47-.24.75l1.16 4.82c.14.58-.49 1.03-.99.71l-4.15-2.57a.74.74 0 0 0-.78 0l-4.15 2.57c-.5.31-1.12-.13-.99-.71l1.16-4.82c.07-.28-.02-.57-.24-.75L3.92 10.3c-.46-.39-.22-1.15.38-1.2l4.94-.42c.28-.03.53-.22.62-.49l1.62-4.7Z" />
-  </svg>
-);
-
 const Pricing = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const bestChoiceRef = useRef<HTMLDivElement | null>(null);
+  const [badgePos, setBadgePos] = useState<{ top: number; left: number }>({
+    top: -9999,
+    left: -9999,
+  });
+
+  useEffect(() => {
+    const updateBadgePosition = () => {
+      if (!sectionRef.current || !bestChoiceRef.current) return;
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const cardRect = bestChoiceRef.current.getBoundingClientRect();
+
+      // Anchor to the card's top-right corner, relative to section
+      const top = cardRect.top - sectionRect.top;
+      const left = cardRect.right - sectionRect.left;
+
+      setBadgePos({ top, left });
+    };
+
+    updateBadgePosition();
+    window.addEventListener("resize", updateBadgePosition);
+    window.addEventListener("scroll", updateBadgePosition, { passive: true });
+
+    const interval = setInterval(updateBadgePosition, 500); // handle layout shifts
+
+    return () => {
+      window.removeEventListener("resize", updateBadgePosition);
+      window.removeEventListener("scroll", updateBadgePosition);
+      clearInterval(interval);
+    };
+  }, []);
   return (
-    <section className="relative w-full bg-black text-white py-24">
+    <section
+      ref={sectionRef}
+      className="relative w-full bg-black text-white py-24"
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14 flex items-end justify-between gap-6">
           <div>
@@ -125,7 +150,7 @@ const Pricing = () => {
         </div>
 
         {/* Mobile: stacked cards */}
-        <div className="md:hidden grid grid-cols-1 gap-6 items-stretch">
+        <div className="md:hidden grid grid-cols-1 gap-6 items-stretch ">
           {tiers.map((tier) => (
             <div
               key={`mobile-${tier.name}`}
@@ -180,6 +205,36 @@ const Pricing = () => {
           ))}
         </div>
 
+        {/* Floating badge for highlighted card (desktop/tablet), avoids overflow clipping */}
+        <div
+          className="hidden md:block absolute z-50"
+          style={{
+            top: badgePos.top - 45,
+            left: badgePos.left - 100,
+          }}
+        >
+          <div className="relative w-[85px] h-[85px] flex items-center justify-center">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 66 72"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                filter: "drop-shadow(-10px 15px 20px rgba(0,53,191,0.75))",
+              }}
+            >
+              <path
+                d="M21.931 5.63834C27.4464 -1.77913 38.5536 -1.77913 44.069 5.63834V5.63834C46.3383 8.69025 49.767 10.6698 53.5447 11.1091V11.1091C62.7261 12.1768 68.2797 21.796 64.6137 30.2812V30.2812C63.1053 33.7724 63.1053 37.7315 64.6137 41.2227V41.2227C68.2797 49.7079 62.7261 59.3271 53.5447 60.3948V60.3948C49.767 60.8341 46.3383 62.8136 44.069 65.8656V65.8656C38.5536 73.283 27.4464 73.283 21.931 65.8656V65.8656C19.6617 62.8136 16.233 60.8341 12.4553 60.3948V60.3948C3.27394 59.3271 -2.27968 49.7079 1.38635 41.2227V41.2227C2.89474 37.7315 2.89474 33.7724 1.38635 30.2812V30.2812C-2.27968 21.796 3.27394 12.1768 12.4553 11.1091V11.1091C16.233 10.6698 19.6617 8.69025 21.931 5.63834V5.63834Z"
+                fill="#0047FF"
+              />
+            </svg>
+            <span className="absolute z-10 text-sm top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+              Best <br /> Choice
+            </span>
+          </div>
+        </div>
+
         {/* Desktop/tablet: table-like grid */}
         <div className="hidden md:block overflow-auto">
           <div className="min-w-[880px] grid grid-cols-4">
@@ -208,12 +263,8 @@ const Pricing = () => {
                 className={`relative p-6 pt-10 border-b border-white/10 flex flex-col items-center text-center ${
                   tier.highlight ? "bg-white/10 rounded-t-3xl" : ""
                 }`}
+                ref={tier.highlight ? bestChoiceRef : null}
               >
-                {tier.highlight && (
-                  <div className="absolute right-0 top-0 px-3 py-1 bg-[#0047ff] rounded-tr-2xl rounded-tl-0 rounded-bl-2xl">
-                    <span className="relative z-10 text-sm">Best Choice</span>
-                  </div>
-                )}
                 <p className="uppercase tracking-widest text-xs text-zinc-400">
                   {tier.name}
                 </p>
