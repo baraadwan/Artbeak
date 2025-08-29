@@ -101,7 +101,7 @@ const Hero = () => {
             {/* Key Statistics */}
             <div className="grid grid-cols-2 gap-6 sm:gap-8 ">
               <div className="text-left">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#C5F010] mb-2 font-inter">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#C5F010] mb-2 font-inter">
                   {/* 95% */}
                   <CountUp
                     from={0}
@@ -118,7 +118,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="text-left">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#C5F010] mb-2 font-inter">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#C5F010] mb-2 font-inter">
                   <CountUp
                     from={0}
                     to={47}
@@ -141,7 +141,7 @@ const Hero = () => {
         <div className="mt-10 sm:mt-16 space-y-6 sm:space-y-8">
           {/* Guarantees */}
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4 text-white text-xl sm:text-2xl lg:text-3xl font-normal font-inter">
+            <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4 text-white text-xl sm:text-2xl lg:text-3xl font-medium font-inter">
               <span>Refund Guaranteed</span>
               <div className="w-2 h-2 bg-white rounded-full"></div>
               <span>100% Risk Free</span>
@@ -151,8 +151,8 @@ const Hero = () => {
           </div>
 
           {/* Founders Section */}
-          <div className="space-y-8">
-            <div className="h-px bg-gray-600"></div>
+          <div className="space-y-16">
+            <div className="h-px bg-[#dddddd]"></div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-14 sm:space-y-0">
               <div className="flex -space-x-2 sm:-space-x-3 ">
                 <div className="w-16 h-16 md:w-24 md:h-24 lg:w-[100px] lg:h-[100px] bg-gray-600 rounded-full border-4 border-white relative">
@@ -177,8 +177,8 @@ const Hero = () => {
                   />
                 </div>
               </div>
-              <div className="flex-1 sm:ml-10 lg:ml-22">
-                <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium font-inter">
+              <div className="flex-1 sm:ml-10 lg:ml-80">
+                <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-inter">
                   We help business redesign their normal websites and turn them
                   into conversion machines risk free.
                 </p>

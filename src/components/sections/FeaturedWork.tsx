@@ -108,12 +108,12 @@ const FeaturedWork = () => {
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 EventRythm Before & After
               </h3>
-              <p className="text-[11px] sm:text-xs text-gray-500">
+              <p className="text-[11px] sm:text-xs text-white/50">
                 Website Redesign & Webflow Development
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <button
+              {/* <button
                 aria-label="Previous"
                 onClick={goPrev}
                 className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center cursor-pointer"
@@ -125,7 +125,7 @@ const FeaturedWork = () => {
                   height={48}
                   className="rotate-180"
                 />
-              </button>
+              </button> */}
               <button
                 aria-label="Next"
                 onClick={goNext}
