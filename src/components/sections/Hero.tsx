@@ -98,7 +98,7 @@ const Hero = () => {
             {/* Key Statistics */}
             <div className="grid grid-cols-2 gap-6 sm:gap-8 ">
               <div className="text-left">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-lime-400 mb-2">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#C5F010] mb-2">
                   {/* 95% */}
                   <CountUp
                     from={0}
@@ -115,7 +115,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="text-left">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-lime-400 mb-2">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#C5F010] mb-2">
                   <CountUp
                     from={0}
                     to={47}

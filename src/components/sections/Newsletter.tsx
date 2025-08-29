@@ -50,9 +50,7 @@ const Newsletter = () => {
               </span>
             </h2>
           </div>
-          <Button className="bg-[#0047ff] hover:bg-[#1F6BFF] text-white px-6 py-3 rounded-lg">
-            Subscribe
-          </Button>
+          <Button>Subscribe</Button>
         </div>
 
         {/* Newsletter Articles Grid */}
