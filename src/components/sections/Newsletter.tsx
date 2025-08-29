@@ -38,7 +38,10 @@ const newsletterArticles = [
 
 const Newsletter = () => {
   return (
-    <section className="relative w-full bg-black text-white py-24">
+    <section
+      id="newsletter"
+      className="relative w-full bg-black text-white py-24 scroll-mt-24"
+    >
       <div className="mx-auto max-w-7xl px-6">
         {/* Header Section */}
         <div className="mb-16 flex items-center justify-between">

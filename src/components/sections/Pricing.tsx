@@ -119,8 +119,9 @@ const Pricing = () => {
   }, []);
   return (
     <section
+      id="pricing"
       ref={sectionRef}
-      className="relative w-full bg-black text-white py-24"
+      className="relative w-full bg-black text-white py-24 scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14 flex items-end justify-between gap-6">

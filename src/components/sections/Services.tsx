@@ -48,7 +48,7 @@ const services: Service[] = [
 
 const Services = () => {
   return (
-    <section className="py-14 sm:py-16 lg:py-20">
+    <section id="services" className="py-14 sm:py-16 lg:py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 sm:mb-14 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 leading-tight">

@@ -5,7 +5,7 @@ import CircularText from "../ui/CircularText/CircularText";
 
 const HeroSection = () => {
   return (
-    <div className="relative overflow-hidden">
+    <div id="cta" className="relative overflow-hidden scroll-mt-24">
       <div>
         <img
           src="/assets/images/bg.png"

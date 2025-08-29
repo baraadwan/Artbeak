@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
 import Link from "next/link";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,8 +18,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   // Get current time and format it
   const getCurrentTime = () => {
@@ -34,7 +33,7 @@ const Header = () => {
     <header
       className={`sticky top-0 left-0 right-0 z-[99] transition-colors ${
         isScrolled
-          ? "bg-[#000000]/70 backdrop-blur-md border-b border-gray-800"
+          ? "bg-[#000000]/70 backdrop-blur-md border-b border-[#2a2a2a]"
           : "bg-transparent"
       }`}
     >
@@ -58,7 +57,7 @@ const Header = () => {
                 </svg>
                 <div className="w-5 h-5 relative">
                   <motion.svg
-                    className="absolute -top-3 -right-2 w-5 h-6 text-[#c5f011]"
+                    className="absolute -top-3 right-1 w-5 h-6 text-[#c5f011]"
                     fill="currentColor"
                     viewBox="0 0 25 24"
                     style={{ originX: 0.5, originY: 0.5 }}
@@ -80,70 +79,150 @@ const Header = () => {
 
           {/* Center - Location & Time */}
           <div className="hidden md:flex items-center space-x-4 text-white">
-            <span className="text-sm font-medium">Cairo, Egypt</span>
-            <span className="text-sm font-medium">{getCurrentTime()}</span>
+            <span className="text-sm font-medium font-inter">Cairo, Egypt</span>
+            <span className="text-sm font-medium font-inter">
+              {getCurrentTime()}
+            </span>
           </div>
 
-          {/* Right - Menu Button */}
+          {/* Right - Menu Button (Popover) */}
           <div className="flex items-center space-x-4">
-            <span className="text-white text-sm font-medium hidden md:block">
+            <span className="text-white text-sm font-medium hidden md:block font-inter">
               Menu
             </span>
-            <button
-              onClick={toggleMenu}
-              className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
-              aria-label="Toggle menu"
+            <Popover
+              placement="bottom-end"
+              offset={8}
+              isOpen={menuOpen}
+              onOpenChange={setMenuOpen}
             >
-              <div className="space-y-1">
-                <div className="w-4 h-0.5 bg-white"></div>
-                <div className="w-4 h-0.5 bg-white"></div>
-              </div>
-            </button>
+              <PopoverTrigger>
+                <button
+                  className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer"
+                  aria-label={menuOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={menuOpen}
+                >
+                  <div className="relative w-5 h-5">
+                    <motion.span
+                      className="absolute left-1/2 top-1/2 block h-0.5 w-5 bg-white"
+                      style={{ translateX: "-50%", translateY: "-50%" }}
+                      animate={{
+                        rotate: menuOpen ? 45 : 0,
+                        y: menuOpen ? 0 : -3,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
+                    />
+                    <motion.span
+                      className="absolute left-1/2 top-1/2 block h-0.5 w-5 bg-white"
+                      style={{ translateX: "-50%", translateY: "-50%" }}
+                      animate={{
+                        rotate: menuOpen ? -45 : 0,
+                        y: menuOpen ? 0 : 3,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
+                    />
+                  </div>
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="p-2 bg-[#1a1a1a] backdrop-blur-sm rounded-lg border border-[#2a2a2a]">
+                <div className="px-2 py-1 space-y-1 min-w-48">
+                  <button
+                    onClick={() => {
+                      document.getElementById("hero")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                  >
+                    Home
+                  </button>
+                  <button
+                    onClick={() => {
+                      document.getElementById("services")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                  >
+                    Services
+                  </button>
+                  <button
+                    onClick={() => {
+                      document.getElementById("work")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                  >
+                    Work
+                  </button>
+                  <button
+                    onClick={() => {
+                      document.getElementById("pricing")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                  >
+                    Pricing
+                  </button>
+                  <button
+                    onClick={() => {
+                      document.getElementById("faq")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                  >
+                    FAQ
+                  </button>
+                  <button
+                    onClick={() => {
+                      document.getElementById("newsletter")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                  >
+                    Newsletter
+                  </button>
+                  <button
+                    onClick={() => {
+                      document.getElementById("cta")?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      setMenuOpen(false);
+                    }}
+                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                  >
+                    Start Now
+                  </button>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 backdrop-blur-sm rounded-lg border border-gray-700 mt-4">
-              <Link
-                href="/"
-                className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/services"
-                className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Services
-              </Link>
-              <Link
-                href="/portfolio"
-                className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Portfolio
-              </Link>
-              <Link
-                href="/about"
-                className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

@@ -21,7 +21,7 @@ const Button = ({
 
   return (
     <button
-      className={`${bgColorClass} text-white font-normal text-2xl pl-6 pr-4 py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer ${className}`}
+      className={`${bgColorClass} text-white font-normal text-2xl pl-6 pr-4 py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer font-inter ${className}`}
       disabled={disabled || isLoading}
       {...props}
     >

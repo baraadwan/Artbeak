@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="text-white border-t border-gray-800">
+    <footer className="text-white border-t border-gray-800 font-inter">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Column 1: Newsletter */}
@@ -29,7 +29,7 @@ const Footer = () => {
               >
                 <path d="M0.651611 11.9974C6.65029 11.9974 12.649 5.99868 12.649 0C12.649 5.99868 18.6477 11.9974 24.6463 11.9974C18.6477 11.9974 12.649 17.996 12.649 23.9947C12.649 17.996 6.65029 11.9974 0.651611 11.9974Z" />
               </motion.svg>
-              <h3 className="text-white text-xl font-semibold">
+              <h3 className="text-white text-xl font-semibold font-inter">
                 Stay with our latest offers and Business newsletter
               </h3>
             </div>
@@ -38,7 +38,7 @@ const Footer = () => {
             <div className="space-y-2">
               <label
                 htmlFor="email-address"
-                className="block text-xs font-normal text-gray-200"
+                className="block text-xs font-normal text-gray-200 font-inter"
               >
                 Email Address
               </label>
@@ -47,7 +47,7 @@ const Footer = () => {
                   type="email"
                   id="email-address"
                   placeholder="Enter your email address"
-                  className="w-full bg-[#151515] rounded-lg px-4 py-2 text-white placeholder-[#999999] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-950"
+                  className="w-full bg-[#151515] rounded-lg px-4 py-2 text-white placeholder-[#999999] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-950 font-inter"
                 />
                 <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white hover:text-blue-400 transition-colors">
                   <IconSend2 className="w-4 h-4" />
@@ -55,7 +55,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-400 font-inter">
               By subscribing, you&apos;re accept our{" "}
               <span className="font-bold text-white underline">
                 Privacy Policy
@@ -67,10 +67,10 @@ const Footer = () => {
             <div className="space-y-8">
               {/* Work Inquiry */}
               <div className="space-y-3">
-                <h4 className="text-white font-semibold text-lg">
+                <h4 className="text-white font-semibold text-lg font-inter">
                   Work Inquiry
                 </h4>
-                <div className="space-y-2 text-gray-300 text-sm">
+                <div className="space-y-2 text-gray-300 text-sm font-inter">
                   <p>bara@artbeak.com</p>
                   <p>+1 (934) 201-2621</p>
                 </div>
@@ -78,10 +78,10 @@ const Footer = () => {
 
               {/* Brooklyn, NY */}
               <div className="space-y-3">
-                <h4 className="text-white font-semibold text-lg">
+                <h4 className="text-white font-semibold text-lg font-inter">
                   Brooklyn, NY
                 </h4>
-                <div className="space-y-1 text-gray-300 text-sm">
+                <div className="space-y-1 text-gray-300 text-sm font-inter">
                   <p>3336 Fulton St, Brooklyn</p>
                   <p>NY 11208</p>
                   <p>United States</p>
@@ -93,10 +93,10 @@ const Footer = () => {
             <div className="space-y-8">
               {/* Open Positions */}
               <div className="space-y-3">
-                <h4 className="text-white font-semibold text-lg">
+                <h4 className="text-white font-semibold text-lg font-inter">
                   Open Position
                 </h4>
-                <div className="space-y-2 text-gray-300 text-sm">
+                <div className="space-y-2 text-gray-300 text-sm font-inter">
                   <p>Front-end Developer (Remote)</p>
                   <p>UI/UX Designer (Remote)</p>
                 </div>
@@ -104,17 +104,19 @@ const Footer = () => {
 
               {/* Links */}
               <div className="space-y-3">
-                <h4 className="text-white font-semibold text-lg">Links</h4>
+                <h4 className="text-white font-semibold text-lg font-inter">
+                  Links
+                </h4>
                 <div className="space-y-2 text-sm">
                   <Link
                     href="/terms"
-                    className="block text-gray-300 hover:text-white transition-colors"
+                    className="block text-gray-300 hover:text-white transition-colors font-inter"
                   >
                     Terms & Conditions
                   </Link>
                   <Link
                     href="/privacy"
-                    className="block text-gray-300 hover:text-white transition-colors"
+                    className="block text-gray-300 hover:text-white transition-colors font-inter"
                   >
                     Privacy Policy
                   </Link>
@@ -127,12 +129,12 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-4 mt-10">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm font-inter">
               © {currentYear} Artbeak LLC All Rights Reserved
             </p>
 
             {/* Scroll to top button */}
-            <button className="mt-4 md:mt-0 w-14 h-14 flex items-center justify-center hover:bg-gray-700 transition-colors rounded">
+            <button className="mt-4 md:mt-0 w-14 h-14 flex items-center justify-center hover:bg-gray-700 transition-colors rounded font-inter">
               <svg
                 width="35"
                 height="42"

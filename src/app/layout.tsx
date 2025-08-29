@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import LenisWrapper from "@/components/wrapper/LenisWrapper";
+import localFont from "next/font/local";
 
-const inter = Inter({
+const interFont = localFont({
+  src: "../assets/fonts/Inter-VariableFont.ttf",
   variable: "--font-inter",
-  subsets: ["latin"],
 });
 
-const playfairDisplay = Playfair_Display({
+const playfairDisplay = localFont({
+  src: "../assets/fonts/PlayfairDisplay-Italic-VariableFont.ttf",
   variable: "--font-playfair-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,9 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${playfairDisplay.variable} antialiased`}
+        className={`${interFont.variable} ${playfairDisplay.variable} antialiased font-inter`}
       >
-        {children}
+        <LenisWrapper>{children}</LenisWrapper>
       </body>
     </html>
   );
