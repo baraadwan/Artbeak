@@ -130,22 +130,16 @@ const Services = () => {
                   autoplay
                   testimonials={[
                     {
-                      name: "Conor Bradley",
-                      designation: "Senior Marketing, Spotify",
-                      quote: `"Artbeak studio ability to create a high quality UI stands out. It's something we placed a premium on. A studio with passionate, professional, fun and full creativity. Recommend!"`,
-                      src: "",
+                      name: "Kevin Quah",
+                      designation: "",
+                      quote: `"Responsive and relentlessly hardworking on different aspects of website building. Bara is experienced in Webflow and I'd recommend him for rebuillding your website from scratch."`,
+                      src: "/assets/clients/client-kevin-.jpeg",
                     },
                     {
-                      name: "Aisha Kumar",
-                      designation: "Product Manager, Square",
-                      quote: `"They delivered fast, communicated clearly, and the final product exceeded expectations across web and mobile."`,
-                      src: "",
-                    },
-                    {
-                      name: "Marco Liu",
-                      designation: "Founder, Archin",
-                      quote: ` "From concept to launch, the team was world-class. Pixel-perfect design paired with robust engineering."`,
-                      src: "",
+                      name: "Param Singh",
+                      designation: "",
+                      quote: `"I had a very professional experience working with Bara and would recommend him for website design. Hopefully we will work together again."`,
+                      src: "/assets/clients/client-param-singh.jpeg",
                     },
                   ]}
                 />

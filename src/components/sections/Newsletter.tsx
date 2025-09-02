@@ -95,7 +95,7 @@ const Newsletter = () => {
 
                 {/* Interactive Button Overlay (visible on hover/focus) */}
                 <button
-                  className="absolute top-2 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto outline-none bg-white"
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto outline-none bg-white cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
                     window.open(article.link, "_blank");

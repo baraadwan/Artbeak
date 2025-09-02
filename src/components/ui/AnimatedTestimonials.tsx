@@ -87,7 +87,18 @@ export const AnimatedTestimonials = ({
           <div className="h-[1px] w-full bg-neutral-800 my-3 sm:my-4"></div>
           <div className="flex flex-col sm:flex-row gap-4 pt-6 sm:pt-8 lg:pt-2 justify-between">
             <div className="flex items-center order-2 sm:order-1">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#c4c4c4] mr-3 sm:mr-4"></div>
+              {testimonials[active].src ? (
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-[#c4c4c4] mr-3 sm:mr-4">
+                  <img
+                    src={testimonials[active].src}
+                    alt={testimonials[active].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#c4c4c4] mr-3 sm:mr-4"></div>
+              )}
+
               <div>
                 <h3 className="text-base sm:text-lg font-bold text-white">
                   {testimonials[active].name}
