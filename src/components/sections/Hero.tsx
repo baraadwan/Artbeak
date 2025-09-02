@@ -6,8 +6,6 @@ import {
   IconBrandDribbble,
   IconBrandInstagram,
   IconBrandLinkedin,
-  IconBrandX,
-  IconWorld,
 } from "@tabler/icons-react";
 import CountUp from "../ui/CountUp/CountUp";
 import Image from "next/image";
@@ -29,7 +27,7 @@ const Hero = () => {
                 <span className="inline mr-3 sm:mr-5">When you </span>
                 <p>
                   <span className="inline mr-3 sm:mr-5"> Convert</span>
-                  <span className="inline text-3xl sm:text-4xl md:text-6xl italic font-normal text-gray-300 font-display">
+                  <span className="inline text-3xl sm:text-4xl md:text-6xl italic font-normal text-white font-display">
                     more
                   </span>
                 </p>
@@ -39,7 +37,18 @@ const Hero = () => {
             {/* Social Proof */}
             <div className="space-y-4 pt-6 sm:pt-8">
               <p className="text-white text-base sm:text-lg py-1 font-inter">
-                5.0 Average Rating on <span className="underline">Google</span>
+                5.0 Average Rating on{" "}
+                <span
+                  onClick={() =>
+                    window.open(
+                      "https://share.google/xmAmcluAfW3LjMMMn",
+                      "_blank"
+                    )
+                  }
+                  className="underline cursor-pointer"
+                >
+                  Google
+                </span>
               </p>
               <div className="  mb-7 sm:mb-10 lg:mb-20"></div>
               {/* Social Icons */}
@@ -57,7 +66,7 @@ const Hero = () => {
                   <IconBrandInstagram className="w-6 h-6 text-black" />
                 </a>
                 <a
-                  href=""
+                  href="https://www.behance.net/artbeak"
                   className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
                 >
                   <IconBrandDribbble className="w-6 h-6 text-black" />

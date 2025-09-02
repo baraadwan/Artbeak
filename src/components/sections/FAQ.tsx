@@ -13,51 +13,52 @@ interface FAQItem {
 const faqItems: FAQItem[] = [
   {
     id: "1",
-    question: "Why's Hubfolio instead of full-time designer?",
+    question: `What does "risk-free website redesign" mean?`,
     answer:
-      "Hubfolio offers flexibility and cost-effectiveness compared to hiring a full-time designer. You get access to our entire team's expertise without the overhead of salary, benefits, and training costs.",
+      "It means you don't pay anything upfront. We redesign your website first, and you only pay if you're satisfied with the results. No risk, no pressure.",
   },
   {
     id: "2",
-    question: "Speed of design delivery?",
+    question: "How long does a website redesign take?",
     answer:
-      "How quick is quick? For most design, we're talking 2-3 business days. We balance speed with quality, ensuring you get top-north design swiftly",
+      "Most redesigns are completed in 1–2 weeks for a standard business site. Complex projects may take longer, but we always provide a clear timeline upfront.",
   },
   {
     id: "3",
-    question: "What's the Hubfolio progress like?",
+    question:
+      "Will my website be mobile-friendly and optimized for conversions?",
     answer:
-      "Our process is streamlined for efficiency. We start with a discovery call, gather your requirements, create initial concepts, refine based on your feedback, and deliver final designs with all necessary assets and documentation.",
+      "Absolutely. Every site we build is fully responsive, fast, and designed to maximize user engagement and conversions.",
   },
   {
     id: "4",
-    question: "In which program do you create designs?",
+    question: "Can you redesign my website without affecting my current site?",
     answer:
-      "We primarily work with industry-standard tools like Figma, Adobe Creative Suite, and Sketch. We can adapt to your preferred platform if you have specific requirements.",
+      "Yes. We work on a separate staging version of your site so your current website stays live until you approve the redesign.",
   },
   {
     id: "5",
-    question: "What if i don't like design?",
+    question: "Do you also improve my website's SEO and performance?",
     answer:
-      "We believe in getting it right. If you're not satisfied with the initial designs, we offer revision rounds to ensure the final product meets your expectations and business goals.",
+      "Yes. Our redesign includes basic SEO optimization, page speed improvements, and layout adjustments that encourage visitors to take action.",
   },
   {
     id: "6",
-    question: "Are there any refunds?",
+    question: "What if I don't like the redesign?",
     answer:
-      "We offer a satisfaction guarantee. If you're completely unsatisfied with our work and we cannot resolve the issues through revisions, we have a partial refund policy detailed in our service agreement.",
+      "No problem. Since it's risk-free, you are under no obligation to pay if the redesign doesn't meet your expectations.",
   },
   {
     id: "7",
-    question: "Are there any refunds?",
+    question: "Can you help increase my sales or leads through the redesign?",
     answer:
-      "We offer a satisfaction guarantee. If you're completely unsatisfied with our work and we cannot resolve the issues through revisions, we have a partial refund policy detailed in our service agreement.",
+      "Yes. Our focus is not just on aesthetics but on conversion optimization—turning more visitors into paying customers.",
   },
   {
     id: "8",
-    question: "Are there any refunds?",
+    question: "How do I get started?",
     answer:
-      "We offer a satisfaction guarantee. If you're completely unsatisfied with our work and we cannot resolve the issues through revisions, we have a partial refund policy detailed in our service agreement.",
+      "Simply fill out a short form or schedule a call. We'll review your website, discuss goals, and start the redesign process without any upfront cost.",
   },
 ];
 

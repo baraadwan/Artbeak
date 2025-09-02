@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Button from "../ui/Button";
 import CircularText from "../ui/CircularText/CircularText";
 
@@ -47,7 +48,9 @@ const HeroSection = () => {
             </div>
 
             {/* CTA Button */}
-            <Button onClick={() => {}}>Start Now</Button>
+            <Link href="https://pgraqmyxdqr.typeform.com/to/PBkWGxPz#hubspot_utk=xxxxx&hubspot_page_name=xxxxx&hubspot_page_url=xxxxx">
+              <Button>Start Now</Button>
+            </Link>
           </div>
         </div>
         <div className="hidden md:flex absolute bottom-16 md:bottom-24 lg:bottom-32 right-4 md:right-6 lg:right-8 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[175px] md:h-[175px] bg-white/10 border bg-opacity-50 rounded-full items-center justify-center">
