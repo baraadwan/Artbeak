@@ -1,9 +1,7 @@
 import React from "react";
 import Button from "../ui/Button";
-import {
-  IconCircleArrowUpRight,
-  IconCircleArrowUpRightFilled,
-} from "@tabler/icons-react";
+import { IconCircleArrowUpRightFilled } from "@tabler/icons-react";
+import Link from "next/link";
 
 const newsletterArticles = [
   {
@@ -53,7 +51,9 @@ const Newsletter = () => {
               </span>
             </h2>
           </div>
-          <Button>Subscribe</Button>
+          <Link href="https://hustleandgrinddiary.substack.com/">
+            <Button>Subscribe</Button>
+          </Link>
         </div>
 
         {/* Newsletter Articles Grid */}

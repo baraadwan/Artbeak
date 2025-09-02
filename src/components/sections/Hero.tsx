@@ -2,8 +2,13 @@
 
 import Link from "next/link";
 import Button from "../ui/Button";
-import DarkVeil from "../ui/DarkVeil";
-import { IconBrandInstagram, IconBrandX, IconWorld } from "@tabler/icons-react";
+import {
+  IconBrandDribbble,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandX,
+  IconWorld,
+} from "@tabler/icons-react";
 import CountUp from "../ui/CountUp/CountUp";
 import Image from "next/image";
 
@@ -40,22 +45,22 @@ const Hero = () => {
               {/* Social Icons */}
               <div className="flex space-x-3 sm:space-x-4">
                 <a
-                  href="https://x.com/"
+                  href="https://www.linkedin.com/company/artbeak"
                   className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
                 >
-                  <IconBrandX className="w-5 h-5 text-black" />
+                  <IconBrandLinkedin className="w-6 h-6 text-black" />
                 </a>
                 <a
                   href="https://www.instagram.com/"
                   className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
                 >
-                  <IconBrandInstagram className="w-5 h-5 text-black" />
+                  <IconBrandInstagram className="w-6 h-6 text-black" />
                 </a>
                 <a
                   href=""
                   className="w-10 h-10 border border-white rounded-full flex items-center justify-center bg-white cursor-pointer"
                 >
-                  <IconWorld className="w-5 h-5 text-black" />
+                  <IconBrandDribbble className="w-6 h-6 text-black" />
                 </a>
               </div>
             </div>
@@ -74,7 +79,7 @@ const Hero = () => {
               {/* CTA Button */}
               <div className="pt-6 sm:pt-8">
                 <div>
-                  <Link href="/contact">
+                  <Link href="https://pgraqmyxdqr.typeform.com/to/PBkWGxPz#hubspot_utk=xxxxx&hubspot_page_name=xxxxx&hubspot_page_url=xxxxx">
                     <Button>Start Now</Button>
                   </Link>
                 </div>

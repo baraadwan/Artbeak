@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../ui/Button";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const features = [
   "Design & Development files",
@@ -91,6 +90,18 @@ const Pricing = () => {
     top: -9999,
     left: -9999,
   });
+  const [isYearly, setIsYearly] = useState(false);
+
+  // Calculate prices based on billing period
+  const calculatePrice = (basePrice: string, tierName: string) => {
+    const numericPrice = parseInt(basePrice.replace(/[$,]/g, ""));
+    // Single Website is a one-time purchase, no discount for yearly
+    if (isYearly && tierName !== "Single Website") {
+      const discountedPrice = Math.round(numericPrice * 0.8); // 20% discount
+      return `$${discountedPrice.toLocaleString()}`;
+    }
+    return basePrice;
+  };
 
   useEffect(() => {
     const updateBadgePosition = () => {
@@ -137,12 +148,26 @@ const Pricing = () => {
               and kick-start now
             </p>
           </div>
-          <div className="hidden md:flex items-center gap-2 rounded-full bg-zinc-900 p-1">
-            <button className="px-4 py-1.5 text-sm rounded-full text-zinc-300">
+          <div className="hidden md:flex items-center rounded-full bg-zinc-900 p-1">
+            <button
+              onClick={() => setIsYearly(false)}
+              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
+                !isYearly
+                  ? "bg-[#0047ff] text-white"
+                  : "text-zinc-300 hover:text-white"
+              }`}
+            >
               Monthly
             </button>
-            <button className="px-4 py-1.5 text-sm rounded-full bg-[#0047ff] text-white">
-              Yearly{" "}
+            <button
+              onClick={() => setIsYearly(true)}
+              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
+                isYearly
+                  ? "bg-[#0047ff] text-white"
+                  : "text-zinc-300 hover:text-white"
+              }`}
+            >
+              Yearly
               <span className="ml-1 py-[1px] rounded-full bg-white text-black px-1">
                 -20%
               </span>
@@ -171,7 +196,9 @@ const Pricing = () => {
                   {tier.name}
                 </p>
                 <div className="mt-2 flex items-baseline gap-2">
-                  <span className="text-3xl font-semibold">{tier.price}</span>
+                  <span className="text-3xl font-semibold">
+                    {calculatePrice(tier.price, tier.name)}
+                  </span>
                   <span className="text-zinc-400">{tier.cadence}</span>
                 </div>
                 <p className="mt-1 text-sm text-zinc-400">{tier.subtitle}</p>
@@ -271,7 +298,7 @@ const Pricing = () => {
                 </p>
                 <div className="mt-4 flex items-baseline gap-2 justify-center">
                   <span className="text-3xl md:text-4xl font-semibold">
-                    {tier.price}
+                    {calculatePrice(tier.price, tier.name)}
                   </span>
                   <span className="text-zinc-400">{tier.cadence}</span>
                 </div>

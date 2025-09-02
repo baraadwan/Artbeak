@@ -87,7 +87,7 @@ const FeaturedWork = () => {
               Work
             </span>
           </h2>
-          <Link href="/portfolio">
+          <Link href="https://www.behance.net/artbeak">
             <Button>See More</Button>
           </Link>
         </div>
