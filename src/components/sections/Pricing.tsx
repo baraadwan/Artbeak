@@ -91,6 +91,17 @@ const Pricing = () => {
     left: -9999,
   });
   const [isYearly, setIsYearly] = useState(false);
+  const SINGLE_WEBSITE_CHECKOUT_URL =
+    "https://buy.stripe.com/00wbJ28WH08afxGbYh3F604";
+  const UNLIMITED_WEBSITE_MONTHLY_URL =
+    "https://buy.stripe.com/cNi3cw6Oz6wy2KUgex3F605";
+  const UNLIMITED_WEBSITE_YEARLY_URL =
+    "https://buy.stripe.com/9B69AU2yj5su71a9Q93F607";
+
+  const UNLIMITED_WEB_APP_MONTHLY_URL =
+    "https://buy.stripe.com/6oUdRab4P9IK2KU4vP3F606";
+  const UNLIMITED_WEB_APP_YEARLY_URL =
+    "https://buy.stripe.com/fZu4gAgp93km71aaUd3F608";
 
   // Calculate prices based on billing period
   const calculatePrice = (basePrice: string, tierName: string) => {
@@ -175,6 +186,35 @@ const Pricing = () => {
           </div>
         </div>
 
+        {/* Mobile: billing period toggle */}
+        <div className="md:hidden mb-6 flex items-center justify-center">
+          <div className="flex items-center rounded-full bg-zinc-900 p-1">
+            <button
+              onClick={() => setIsYearly(false)}
+              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
+                !isYearly
+                  ? "bg-[#0047ff] text-white"
+                  : "text-zinc-300 hover:text-white"
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setIsYearly(true)}
+              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
+                isYearly
+                  ? "bg-[#0047ff] text-white"
+                  : "text-zinc-300 hover:text-white"
+              }`}
+            >
+              Yearly
+              <span className="ml-1 py-[1px] rounded-full bg-white text-black px-1">
+                -20%
+              </span>
+            </button>
+          </div>
+        </div>
+
         {/* Mobile: stacked cards */}
         <div className="md:hidden grid grid-cols-1 gap-6 items-stretch ">
           {tiers.map((tier) => (
@@ -225,6 +265,25 @@ const Pricing = () => {
               <div className="p-6">
                 <Button
                   className={`w-full ${tier.highlight ? "bg-[#1F6BFF]" : ""}`}
+                  onClick={() => {
+                    if (tier.name === "Single Website") {
+                      window.open(
+                        SINGLE_WEBSITE_CHECKOUT_URL,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    } else if (tier.name === "Unlimited Websites") {
+                      const url = isYearly
+                        ? UNLIMITED_WEBSITE_YEARLY_URL
+                        : UNLIMITED_WEBSITE_MONTHLY_URL;
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    } else if (tier.name === "Unlimited Web Apps") {
+                      const url = isYearly
+                        ? UNLIMITED_WEB_APP_YEARLY_URL
+                        : UNLIMITED_WEB_APP_MONTHLY_URL;
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    }
+                  }}
                 >
                   {tier.cta.label}
                 </Button>
@@ -340,7 +399,28 @@ const Pricing = () => {
                   tier.highlight ? "bg-white/10 rounded-b-3xl " : ""
                 }`}
               >
-                <Button variant={tier.highlight ? "primary" : "secondary"}>
+                <Button
+                  variant={tier.highlight ? "primary" : "secondary"}
+                  onClick={() => {
+                    if (tier.name === "Single Website") {
+                      window.open(
+                        SINGLE_WEBSITE_CHECKOUT_URL,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    } else if (tier.name === "Unlimited Websites") {
+                      const url = isYearly
+                        ? UNLIMITED_WEBSITE_YEARLY_URL
+                        : UNLIMITED_WEBSITE_MONTHLY_URL;
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    } else if (tier.name === "Unlimited Web Apps") {
+                      const url = isYearly
+                        ? UNLIMITED_WEB_APP_YEARLY_URL
+                        : UNLIMITED_WEB_APP_MONTHLY_URL;
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                >
                   {tier.cta.label}
                 </Button>
               </div>
