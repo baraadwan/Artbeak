@@ -6,6 +6,13 @@ import Link from "next/link";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="text-white border-t border-gray-800 font-inter">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -134,7 +141,11 @@ const Footer = () => {
             </p>
 
             {/* Scroll to top button */}
-            <button className="mt-4 md:mt-0 w-14 h-14 flex items-center justify-center hover:bg-gray-700 transition-colors rounded font-inter">
+            <button
+              onClick={scrollToTop}
+              className="mt-4 md:mt-0 w-14 h-14 flex items-center justify-center transform hover:scale-110 transition-all rounded-full font-inter cursor-pointer"
+              aria-label="Scroll to top"
+            >
               <svg
                 width="35"
                 height="42"

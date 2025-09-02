@@ -80,7 +80,8 @@ const FeaturedWork = () => {
         {/* Header */}
         <div className="flex flex-row gap-6 items-center justify-between mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
-            <span className="text-white">Featured</span>
+            <span className="text-white">Featured</span>{" "}
+            <br className="sm:hidden" />
             <span className="text-[#0047ff] font-display italic font-normal">
               {" "}
               Work

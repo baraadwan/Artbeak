@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative bg-[#010208] flex items-center overflow-hidden lg:h-[1100px] md:h-[1400px] sm:h-[1200px] h-[1200px] -mt-[80px] scroll-mt-24"
+      className="relative bg-[#010208] flex items-center overflow-hidden lg:h-[1100px] md:h-[1400px] sm:h-[1200px] h-[1300px] -mt-[80px] scroll-mt-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full absolute inset-0 z-10 pb-16 sm:pb-16 pt-20 sm:pt-24 lg:pt-28 flex justify-center flex-col">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-10 sm:mb-16 lg:mb-22">
@@ -173,7 +173,16 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <DarkVeil hueShift={24} />
+      <div className="max-w-[1480px] mx-auto relative h-full w-full">
+        <div className="absolute inset-0 -right-96">
+          <img
+            src="/header-shape.svg"
+            alt=""
+            className="blur-3xl opacity-70 h-[90%] w-full"
+          />
+        </div>
+      </div>
+      {/* <DarkVeil hueShift={24} /> */}
     </section>
   );
 };

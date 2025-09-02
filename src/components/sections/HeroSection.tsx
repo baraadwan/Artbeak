@@ -15,36 +15,34 @@ const HeroSection = () => {
         <img
           src="/assets/icons/A.png"
           alt=""
-          className="w-[460px] absolute bottom-6 left-1/2 transform -translate-x-1/2 opacity-5 "
+          className="w-[280px] sm:w-[360px] md:w-[460px] absolute bottom-6 left-1/2 transform -translate-x-1/2 opacity-5"
         />
       </div>
-      <div className="relative z-10 flex items-center py-28 max-w-7xl mx-auto">
-        <div className=" px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
+      <div className="relative z-10 flex flex-col md:flex-row items-center py-16 sm:py-20 md:py-28 max-w-7xl mx-auto">
+        <div className="px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-2xl mx-auto md:mx-0">
             {/* Top text */}
-            <div className="mb-28">
-              <span className="text-[#8b94b2] text-lg font-normal">
+            <div className="mb-16 sm:mb-20 md:mb-28">
+              <span className="text-white text-base sm:text-lg font-normal">
                 Ready to
               </span>
-              <span className="text-[#c5f011] text-lg font-normal ml-2">
+              <span className="text-[#c5f011] text-base sm:text-lg font-normal ml-2">
                 elevate
               </span>
               <br />
-              <span className="text-[#c5f011] text-lg font-normal">
+              <span className="text-[#c5f011] text-base sm:text-lg font-normal">
                 your brand?
               </span>
             </div>
 
             {/* Main heading */}
-            <div className="mb-8">
-              <p className="text-[#828285] text-5xl italic font-normal -mb-2">
+            <div className="mb-6 sm:mb-8">
+              <p className="text-white text-3xl sm:text-4xl md:text-5xl italic font-normal -mb-1 sm:-mb-2">
                 Let&apos;s start
               </p>
-              <h1 className="text-8xl font-normal text-white leading-tight">
-                <span className="font-bold mr-3">Your</span>
-                <span className=" italic font-display font-normal">
-                  Project
-                </span>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white leading-tight">
+                <span className="font-bold mr-2 sm:mr-3">Your</span>
+                <span className="italic font-display font-normal">Project</span>
               </h1>
             </div>
 
@@ -52,7 +50,7 @@ const HeroSection = () => {
             <Button onClick={() => {}}>Start Now</Button>
           </div>
         </div>
-        <div className="absolute bottom-32 right-8 w-[175px] h-[175px] bg-white/10 border bg-opacity-50 rounded-full flex items-center justify-center">
+        <div className="hidden md:flex absolute bottom-16 md:bottom-24 lg:bottom-32 right-4 md:right-6 lg:right-8 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[175px] md:h-[175px] bg-white/10 border bg-opacity-50 rounded-full items-center justify-center">
           <CircularText
             text="AWARD WINNING AGENCY - SINCE 2020 - "
             onHover="speedUp"
@@ -62,7 +60,7 @@ const HeroSection = () => {
           <img
             src="/assets/icons/Union.png"
             alt=""
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 sm:w-8 md:w-auto"
           />
         </div>
       </div>

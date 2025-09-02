@@ -21,19 +21,19 @@ const Button = ({
 
   return (
     <button
-      className={`${bgColorClass} text-white font-normal text-2xl pl-6 pr-4 py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer font-inter ${className}`}
+      className={`${bgColorClass} text-white font-normal text-base sm:text-lg md:text-xl lg:text-2xl px-4 sm:pl-5 sm:pr-3 md:pl-6 md:pr-4 py-2 sm:py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer font-inter ${className}`}
       disabled={disabled || isLoading}
       {...props}
     >
       {isLoading ? "Loading..." : children}
-      <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center ml-4 transition-transform group-hover:translate-x-1">
+      <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 bg-white rounded-full flex items-center justify-center ml-2 sm:ml-3 md:ml-4 transition-transform group-hover:translate-x-1">
         <svg
           width="29"
           height="28"
           viewBox="0 0 29 28"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 text-[#0047ff]"
+          className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#0047ff]"
         >
           <mask
             id="mask0_3302_1235"
