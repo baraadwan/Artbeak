@@ -5,6 +5,7 @@ import { IconBrandWebflow, IconCode } from "@tabler/icons-react";
 import SpotlightCard from "../ui/SpotlightCard/SpotlightCard";
 import CircularText from "../ui/CircularText/CircularText";
 import { AnimatedTestimonials } from "../ui/AnimatedTestimonials";
+import { motion } from "framer-motion";
 
 interface Service {
   id: string;
@@ -64,10 +65,14 @@ const Services = () => {
           {/* Top divider */}
           <div className="w-full h-px bg-gray-600"></div>
 
-          {services.map((service) => (
-            <div
+          {services.map((service, index) => (
+            <motion.div
               key={service.id}
-              className={`relative rounded-lg transition-all duration-300 group hover:bg-[#151515]`}
+              className={`relative rounded-lg transition-all duration-300 group hover:bg-[#151515] hover:shadow-lg hover:shadow-blue-500/20 hover:border-l-4 hover:border-blue-500`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
             >
               <div className="grid grid-cols-12 items-center gap-x-4 gap-y-3 py-5">
                 <h3
@@ -85,7 +90,7 @@ const Services = () => {
 
               {/* Separator line */}
               <div className="w-full h-px bg-gray-600"></div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

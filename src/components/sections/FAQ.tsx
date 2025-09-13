@@ -85,15 +85,19 @@ const FAQ = () => {
 
         {/* FAQ Items */}
         <div className="space-y-1.5">
-          {faqItems.map((item) => {
+          {faqItems.map((item, index) => {
             const isOpen = openItem === item.id;
 
             return (
-              <div
+              <motion.div
                 key={item.id}
                 className={`rounded-lg transition-all duration-300 ${
                   isOpen ? "bg-blue-600" : "bg-[#151515] hover:bg-[#1a1a1a]"
                 }`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
               >
                 <button
                   onClick={() => toggleItem(item.id)}
@@ -145,7 +149,7 @@ const FAQ = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>

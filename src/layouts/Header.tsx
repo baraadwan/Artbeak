@@ -98,7 +98,7 @@ const Header = () => {
             >
               <PopoverTrigger>
                 <button
-                  className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer"
+                  className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30"
                   aria-label={menuOpen ? "Close menu" : "Open menu"}
                   aria-expanded={menuOpen}
                 >
@@ -223,6 +223,8 @@ const Header = () => {
             </Popover>
           </div>
         </div>
+        {/* White line that disappears when scrolling */}
+        {!isScrolled && <div className="h-px bg-white"></div>}
       </div>
     </header>
   );

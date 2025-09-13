@@ -9,6 +9,7 @@ import {
 } from "@tabler/icons-react";
 import CountUp from "../ui/CountUp/CountUp";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (

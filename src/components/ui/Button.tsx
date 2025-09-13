@@ -21,7 +21,7 @@ const Button = ({
 
   return (
     <button
-      className={`${bgColorClass} text-white font-normal text-base sm:text-lg md:text-xl lg:text-2xl px-4 sm:pl-5 sm:pr-3 md:pl-6 md:pr-4 py-2 sm:py-2.5 rounded-full flex items-center justify-center transition-colors group cursor-pointer font-inter ${className}`}
+      className={`${bgColorClass} text-white font-normal text-base sm:text-lg md:text-xl lg:text-2xl px-4 sm:pl-5 sm:pr-3 md:pl-6 md:pr-4 py-2 sm:py-2.5 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer font-inter hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 ${className}`}
       disabled={disabled || isLoading}
       {...props}
     >

@@ -217,14 +217,18 @@ const Pricing = () => {
 
         {/* Mobile: stacked cards */}
         <div className="md:hidden grid grid-cols-1 gap-6 items-stretch ">
-          {tiers.map((tier) => (
-            <div
+          {tiers.map((tier, index) => (
+            <motion.div
               key={`mobile-${tier.name}`}
-              className={`relative rounded-3xl bg-zinc-950/60 backdrop-blur-sm ${
+              className={`relative rounded-3xl bg-zinc-950/60 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 ${
                 tier.highlight
-                  ? "ring-1 ring-blue-500/50 shadow-[0_0_60px_-15px_rgba(59,130,246,0.6)]"
-                  : ""
+                  ? "ring-1 ring-blue-500/50 shadow-[0_0_60px_-15px_rgba(59,130,246,0.6)] hover:shadow-[0_0_80px_-10px_rgba(59,130,246,0.8)]"
+                  : "hover:ring-1 hover:ring-blue-500/30"
               }`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: true, margin: "-50px" }}
             >
               {tier.highlight && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-[#0047ff] rounded-full">
@@ -288,7 +292,7 @@ const Pricing = () => {
                   {tier.cta.label}
                 </Button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

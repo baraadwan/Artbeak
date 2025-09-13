@@ -49,14 +49,18 @@ const Footer = () => {
               >
                 Email Address
               </label>
-              <div className="relative">
+              <div className="relative" suppressHydrationWarning>
                 <input
                   type="email"
                   id="email-address"
                   placeholder="Enter your email address"
                   className="w-full bg-[#151515] rounded-lg px-4 py-2 text-white placeholder-[#999999] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-950 font-inter"
+                  suppressHydrationWarning
                 />
-                <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white hover:text-blue-400 transition-colors">
+                <button 
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white hover:text-blue-400 transition-colors"
+                  suppressHydrationWarning
+                >
                   <IconSend2 className="w-4 h-4" />
                 </button>
               </div>
