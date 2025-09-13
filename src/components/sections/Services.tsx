@@ -137,13 +137,13 @@ const Services = () => {
                     {
                       name: "Kevin Quah",
                       designation: "",
-                      quote: `"Responsive and relentlessly hardworking on different aspects of website building. Bara is experienced in Webflow and I'd recommend him for rebuillding your website from scratch."`,
+                      quote: `Responsive and relentlessly hardworking on different aspects of website building. Bara is experienced in Webflow and I'd recommend him for rebuillding your website from scratch.`,
                       src: "/assets/clients/client-kevin-.jpeg",
                     },
                     {
                       name: "Param Singh",
                       designation: "",
-                      quote: `"I had a very professional experience working with Bara and would recommend him for website design. Hopefully we will work together again."`,
+                      quote: `I had a very professional experience working with Bara and would recommend him for website design. Hopefully we will work together again.`,
                       src: "/assets/clients/client-param-singh.jpeg",
                     },
                   ]}

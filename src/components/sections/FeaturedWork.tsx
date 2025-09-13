@@ -107,7 +107,7 @@ const FeaturedWork = () => {
           <div className="flex gap-4 items-center justify-between">
             <div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                EventRythm Before & After
+                Snaprent Before & After
               </h3>
               <p className="text-[11px] sm:text-xs text-white/50">
                 Website Redesign & Webflow Development
