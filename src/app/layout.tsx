@@ -71,6 +71,10 @@ export default function RootLayout({
             });`,
           }}
         />
+
+        {/* Stellar preconnect / dns-prefetch */}
+        <link rel="preconnect" href="https://d3niuqph2rteir.cloudfront.net" />
+        <link rel="dns-prefetch" href="https://d3niuqph2rteir.cloudfront.net" />
       </head>
 
       <body
@@ -84,6 +88,34 @@ export default function RootLayout({
           src="https://zzontar2hsjaawcn.public.blob.vercel-storage.com/scripts/domain-1072-httpartbeak.com.js"
           data-domain="1072"
           strategy="afterInteractive"
+        />
+
+        {/* Stellar client script */}
+        <Script
+          id="stellar-script"
+          src="https://d3niuqph2rteir.cloudfront.net/client_js/stellar.js?apiKey=49810e4de6a3e7cb99cdab6812e052b7:560902eadc2f3fc8bc43755e40c2348f156258326a6818a53596a7df053d97bb"
+          strategy="afterInteractive"
+        />
+
+        {/* Page hide script */}
+        <Script
+          id="page-hide"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `!function(){
+              var e="body {opacity: 0 !important;}",
+                  t=document.createElement("style");
+              t.type="text/css";
+              t.id="page-hide-style";
+              t.styleSheet ? t.styleSheet.cssText=e : t.appendChild(document.createTextNode(e));
+              document.head.appendChild(t);
+              window.rmo=function(){
+                var e=document.getElementById("page-hide-style");
+                e && (e.parentNode.removeChild(e), document.body.style.opacity="");
+              };
+              setTimeout(window.rmo, 3000);
+            }();`,
+          }}
         />
       </body>
     </html>
