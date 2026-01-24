@@ -10,7 +10,7 @@ import Pricing from "@/components/sections/Pricing";
 export default function Home() {
   return (
     <MainLayout>
-      <Hero />
+      <Hero buttonId="start-now-btn" />
       <FeaturedWork />
       <Services />
       <Pricing />
