@@ -46,9 +46,42 @@ export default function RootLayout({
           }}
         />
 
-        {/* PostHog */}
+        {/* PostHog main script */}
         <Script
-          id="posthog"
+          src="https://us.i.posthog.com/static/array.js"
+          strategy="afterInteractive"
+        />
+
+        {/* PostHog init */}
+        <Script
+          id="posthog-init"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_
+            __html: `
+              window.posthog && posthog.init('phc_yzaLA9RsDwVzWB2m6KHplkQCoC3F3Onxt1bDpni42j', {
+                api_host: 'https://us.i.posthog.com',
+                person_profiles: 'identified_only',
+                capture_pageview: true,
+                capture_pageleave: true
+              });
+              posthog.identify('uxb_v6g5541rw');
+              posthog.people.set({
+                uxb_tracking_code: 'uxb_v6g5541rw',
+                account_type: 'uxbreak_user'
+              });
+              posthog.capture('uxbreak_tracking_initialized');
+            `,
+          }}
+        />
+
+        {/* Keak script */}
+        <Script
+          id="keak-script"
+          src="https://zzontar2hsjaawcn.public.blob.vercel-storage.com/scripts/domain-1072-httpartbeak.com.js"
+          data-domain="1072"
+          strategy="afterInteractive"
+        />
+      </body>
+    </html>
+  );
+}
