@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Clarity */}
+        {/* Microsoft Clarity */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(c,l,a,r,i,t,y){
@@ -72,7 +72,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* Stellar preconnect / dns-prefetch */}
+        {/* Stellar preconnect */}
         <link rel="preconnect" href="https://d3niuqph2rteir.cloudfront.net" />
         <link rel="dns-prefetch" href="https://d3niuqph2rteir.cloudfront.net" />
       </head>
@@ -82,7 +82,7 @@ export default function RootLayout({
       >
         <LenisWrapper>{children}</LenisWrapper>
 
-        {/* Keak script – after hydration */}
+        {/* Keak script */}
         <Script
           id="keak-script"
           src="https://zzontar2hsjaawcn.public.blob.vercel-storage.com/scripts/domain-1072-httpartbeak.com.js"
@@ -95,6 +95,25 @@ export default function RootLayout({
           id="stellar-script"
           src="https://d3niuqph2rteir.cloudfront.net/client_js/stellar.js?apiKey=49810e4de6a3e7cb99cdab6812e052b7:560902eadc2f3fc8bc43755e40c2348f156258326a6818a53596a7df053d97bb"
           strategy="afterInteractive"
+        />
+
+        {/* ✅ Reb2b script */}
+        <Script
+          id="reb2b-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `!function(key) {
+              if (window.reb2b) return;
+              window.reb2b = {loaded: true};
+              var s = document.createElement("script");
+              s.async = true;
+              s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+              document.getElementsByTagName("script")[0].parentNode.insertBefore(
+                s,
+                document.getElementsByTagName("script")[0]
+              );
+            }("QOQRJH905462");`,
+          }}
         />
 
         {/* Page hide script */}
