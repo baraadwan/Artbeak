@@ -33,7 +33,8 @@ export default function RootLayout({
       >
         {/* Microsoft Clarity */}
         <Script id="ms-clarity" strategy="beforeInteractive">
-          {`(function(c,l,a,r,i,t,y){
+          {`console.log("[analytics] Loading Microsoft Clarity");
+          (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
@@ -42,7 +43,8 @@ export default function RootLayout({
 
         {/* Reb2b */}
         <Script id="reb2b" strategy="beforeInteractive">
-          {`!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("QOQRJH905462");`}
+          {`console.log("[analytics] Initializing Reb2b");
+          !function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("QOQRJH905462");`}
         </Script>
 
         <LenisWrapper>{children}</LenisWrapper>
