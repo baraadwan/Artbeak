@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import LenisWrapper from "@/components/wrapper/LenisWrapper";
@@ -57,7 +58,7 @@ export default function RootLayout({
             }("QOQRJH905462");`,
           }}
         />
-        
+
         {/* Stellar preconnect */}
         <link rel="preconnect" href="https://d3niuqph2rteir.cloudfront.net" />
         <link rel="dns-prefetch" href="https://d3niuqph2rteir.cloudfront.net" />
