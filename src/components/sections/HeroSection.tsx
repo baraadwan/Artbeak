@@ -43,7 +43,7 @@ const HeroSection = () => {
               </p>
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-zinc-900 dark:text-white leading-tight">
                 <span className="font-bold mr-2 sm:mr-3">Your</span>
-                <span className="italic font-display font-normal">Project</span>
+                <span className="italic font-display font-normal text-[#0047ff] dark:text-[#c5f011]">Project</span>
               </h1>
             </div>
 

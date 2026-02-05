@@ -20,13 +20,13 @@ const tiers = [
     price: "$1,999",
     cadence: "/site",
     subtitle:
-      "Full website redesign and build for one site, plus 1 free month of maintenance and conversion optimization.",
+      "Full redesign and build for one site, plus 1 free month of maintenance & CRO.",
     values: [
       "Design & development for one site",
       "Webflow or custom code build",
       "Up to 20 pages",
       "Up to 3 revision rounds",
-      "3 months post-launch support + 1 free month of Maintenance & CRO plans",
+      "1 free month of Maintenance & CRO plans",
       "N/A",
       "Included",
     ],
@@ -38,7 +38,7 @@ const tiers = [
     price: "$99",
     cadence: "/mo",
     subtitle:
-      "Ongoing bugs, security patches, content updates, and 24/7 monitoring.",
+      "Bugs, security, content updates, and 24/7 monitoring.",
     values: [
       "Ongoing maintenance & small updates",
       "Bug fixes, security & content changes",
@@ -56,7 +56,7 @@ const tiers = [
     price: "$199",
     cadence: "/mo",
     subtitle:
-      "Continuous A/B testing and CRO to increase your conversion rate.",
+      "A/B testing and CRO to boost your conversion rate.",
     values: [
       "Ongoing test design & implementation",
       "CRO strategy & A/B testing",
@@ -153,15 +153,15 @@ const Pricing = () => {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14 flex items-end justify-between gap-6">
           <div>
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
-              <span className="text-zinc-900 dark:text-white">Our</span>{" "}
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">
+              <span className="text-zinc-900 dark:text-white">Choose a single project</span>
+              <br />
               <span className="text-[#0047ff] font-display font-normal italic">
-                Pricing
+                or flexible monthly plans
               </span>
             </h2>
             <p className="mt-4 max-w-xl text-sm md:text-base text-zinc-600 dark:text-zinc-300">
-              Clear, straightforward plans tailored to your needs. Choose a plan
-              and kick-start now
+              One-time website redesign or ongoing maintenance and CRO. Pick what fits your needs.
             </p>
           </div>
           <div className="hidden md:flex items-center rounded-full bg-zinc-200 dark:bg-zinc-900 p-1">
@@ -373,7 +373,7 @@ const Pricing = () => {
                 {tiers.map((tier) => (
                   <div
                     key={`val-${tier.name}-${feature}`}
-                    className={`px-8 py-4 text-sm border-b border-zinc-200 dark:border-white/10 flex items-center justify-center ${
+                    className={`px-8 py-4 text-sm border-b border-zinc-200 dark:border-white/10 flex items-center justify-center text-center ${
                       tier.highlight
                         ? "bg-zinc-100 dark:bg-white/10"
                         : "bg-white dark:bg-zinc-900/60"
@@ -382,7 +382,7 @@ const Pricing = () => {
                     {tier.values[rowIndex] === "Included" ? (
                       <CheckIcon />
                     ) : (
-                      <span className="text-zinc-600 dark:text-zinc-300">
+                      <span className="text-zinc-600 dark:text-zinc-300 text-center block w-full">
                         {tier.values[rowIndex]}
                       </span>
                     )}

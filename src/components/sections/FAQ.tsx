@@ -71,14 +71,14 @@ const FAQ = () => {
 
   return (
     <section id="faq" className="py-20 scroll-mt-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-semibold">
+        <div className="mb-10 sm:mb-14 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 leading-tight max-w-xl text-left">
             <span className="text-zinc-900 dark:text-white">Ask Us</span>
             <span className="text-[#0047ff] font-display italic font-normal">
               {" "}
-              Anything
+              Anything <br></br> about our services
             </span>
           </h2>
         </div>

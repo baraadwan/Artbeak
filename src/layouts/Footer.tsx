@@ -1,10 +1,15 @@
 "use client";
+
+import { useState } from "react";
 import { IconSend2 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -42,7 +47,35 @@ const Footer = () => {
             </div>
 
             {/* Newsletter Form */}
-            <div className="space-y-2">
+            <form
+              className="space-y-2"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const value = email.trim();
+                if (!value) return;
+                setStatus("loading");
+                setMessage("");
+                try {
+                  const res = await fetch("/api/subscribe", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: value }),
+                  });
+                  const data = await res.json().catch(() => ({}));
+                  if (res.ok) {
+                    setStatus("success");
+                    setEmail("");
+                    setMessage("Thanks! You're subscribed.");
+                  } else {
+                    setStatus("error");
+                    setMessage(data?.error || "Something went wrong. Please try again.");
+                  }
+                } catch {
+                  setStatus("error");
+                  setMessage("Something went wrong. Please try again.");
+                }
+              }}
+            >
               <label
                 htmlFor="email-address"
                 className="block text-xs font-normal text-zinc-600 dark:text-gray-200 font-inter"
@@ -54,17 +87,33 @@ const Footer = () => {
                   type="email"
                   id="email-address"
                   placeholder="Enter your email address"
-                  className="w-full bg-zinc-100 dark:bg-[#151515] rounded-lg px-4 py-2 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-[#999999] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-100 dark:focus:ring-offset-gray-950 font-inter"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === "loading"}
+                  className="w-full bg-zinc-100 dark:bg-[#151515] rounded-lg px-4 py-2 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-[#999999] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-100 dark:focus:ring-offset-gray-950 font-inter disabled:opacity-60"
                   suppressHydrationWarning
                 />
-                <button 
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-zinc-700 dark:text-white hover:text-[#0047ff] dark:hover:text-blue-400 transition-colors"
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-zinc-700 dark:text-white hover:text-[#0047ff] dark:hover:text-blue-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   suppressHydrationWarning
                 >
                   <IconSend2 className="w-4 h-4" />
                 </button>
               </div>
-            </div>
+              {message && (
+                <p
+                  className={`text-xs font-inter ${
+                    status === "success"
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-red-600 dark:text-red-400"
+                  }`}
+                >
+                  {message}
+                </p>
+              )}
+            </form>
 
             <p className="text-xs text-zinc-500 dark:text-gray-400 font-inter">
               By subscribing, you&apos;re accept our{" "}

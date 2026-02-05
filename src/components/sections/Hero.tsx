@@ -39,7 +39,7 @@ const Hero = () => {
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-zinc-900 dark:text-white leading-tight font-inter">
                 <span className="block">
                   Free website redesign — pay only if you{" "}
-                  <span className="font-display italic font-normal">
+                  <span className="font-display italic font-normal text-[#0047ff] dark:text-[#c5f011]">
                     love it.
                   </span>
                 </span>
