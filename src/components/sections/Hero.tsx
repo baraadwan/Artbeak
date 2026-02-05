@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative bg-zinc-100 dark:bg-[#010208] flex items-center overflow-hidden lg:h-[1100px] md:h-[1400px] sm:h-[1200px] h-[1300px] -mt-[80px] scroll-mt-24"
+      className="relative bg-zinc-100 dark:bg-[#010208] flex items-center overflow-hidden lg:h-[1100px] md:h-[1400px] sm:h-[1200px] h-[1400px] -mt-[80px] scroll-mt-24"
     >
       {/* Background — hidden in light mode */}
       <div className="absolute inset-0 z-0 hidden dark:block">

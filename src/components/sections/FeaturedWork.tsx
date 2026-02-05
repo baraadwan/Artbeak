@@ -30,7 +30,7 @@ const projects = [
 
 const FeaturedWork = () => {
   return (
-    <section id="work" className="py-0 sm:py-12 lg:py-20 scroll-mt-24">
+    <section id="work" className="pt-24 pb-24 sm:pt-12 sm:pb-12 lg:pt-20 lg:pb-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-row gap-6 items-center justify-between mb-12">
