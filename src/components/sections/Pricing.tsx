@@ -256,14 +256,16 @@ const Pricing = () => {
                 {features.map((feature, rowIndex) => (
                   <div
                     key={`mfeat-${feature}`}
-                    className="flex items-center justify-between px-6 py-3 text-sm border-b border-zinc-200 dark:border-white/10 last:border-b-0"
+                    className="flex items-center justify-between gap-4 px-6 py-3 text-sm border-b border-zinc-200 dark:border-white/10 last:border-b-0"
                   >
-                    <span className="text-zinc-600 dark:text-zinc-300">{feature}</span>
-                    <span className="flex items-center gap-2 text-zinc-700 dark:text-zinc-200">
+                    <span className="text-left text-zinc-600 dark:text-zinc-300 min-w-0 flex-1">
+                      {feature}
+                    </span>
+                    <span className="flex items-center justify-end gap-2 text-right text-zinc-700 dark:text-zinc-200 flex-shrink-0 min-w-0 max-w-[55%]">
                       {tier.values[rowIndex] === "Included" ? (
                         <CheckIcon />
                       ) : (
-                        <span className="text-zinc-600 dark:text-zinc-300">
+                        <span className="text-zinc-600 dark:text-zinc-300 text-right">
                           {tier.values[rowIndex]}
                         </span>
                       )}

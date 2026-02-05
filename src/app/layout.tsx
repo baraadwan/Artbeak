@@ -18,10 +18,61 @@ const playfairDisplay = localFont({
   variable: "--font-playfair-display",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://artbeak.com";
+
 export const metadata: Metadata = {
-  title: "Artbeak | Creative Agency",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Artbeak | Risk-Free Website Redesign & Conversion Optimization",
+    template: "%s | Artbeak",
+  },
   description:
-    "Performance-based, risk-free website redesign agency turning normal websites into conversion machines.",
+    "Free website redesign — pay only if you love it. We redesign your site at no upfront cost. Webflow builds, ongoing maintenance, and A/B testing for higher conversions. Brooklyn-based award-winning agency.",
+  keywords: [
+    "website redesign",
+    "risk-free redesign",
+    "Webflow development",
+    "conversion rate optimization",
+    "CRO",
+    "A/B testing",
+    "website maintenance",
+    "Brooklyn web agency",
+    "Artbeak",
+  ],
+  authors: [{ name: "Artbeak LLC", url: siteUrl }],
+  creator: "Artbeak LLC",
+  publisher: "Artbeak LLC",
+  formatDetection: { email: false, address: false, telephone: false },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Artbeak",
+    title: "Artbeak | Risk-Free Website Redesign & Conversion Optimization",
+    description:
+      "Free website redesign — pay only if you love it. Webflow, maintenance, and CRO. No upfront cost. Brooklyn-based award-winning agency.",
+    images: [
+      {
+        url: "/hero-bg.png",
+        width: 1200,
+        height: 630,
+        alt: "Artbeak — Risk-free website redesign and conversion optimization",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Artbeak | Risk-Free Website Redesign & Conversion Optimization",
+    description:
+      "Free website redesign — pay only if you love it. Webflow, maintenance, CRO. No upfront cost.",
+    images: ["/hero-bg.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  alternates: { canonical: siteUrl },
 };
 
 export default function RootLayout({
