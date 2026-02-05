@@ -75,7 +75,7 @@ const FAQ = () => {
         {/* Title */}
         <div className="text-center mb-16">
           <h2 className="text-5xl font-semibold">
-            <span className="text-white">Ask Us</span>
+            <span className="text-zinc-900 dark:text-white">Ask Us</span>
             <span className="text-[#0047ff] font-display italic font-normal">
               {" "}
               Anything
@@ -92,7 +92,9 @@ const FAQ = () => {
               <motion.div
                 key={item.id}
                 className={`rounded-lg transition-all duration-300 ${
-                  isOpen ? "bg-blue-600" : "bg-[#151515] hover:bg-[#1a1a1a]"
+                  isOpen
+                    ? "bg-[#0047ff]"
+                    : "bg-zinc-200 dark:bg-[#151515] hover:bg-zinc-300 dark:hover:bg-[#1a1a1a]"
                 }`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +107,7 @@ const FAQ = () => {
                 >
                   <span
                     className={`text-lg font-medium ${
-                      isOpen ? "text-white" : "text-white"
+                      isOpen ? "text-white" : "text-zinc-900 dark:text-white"
                     }`}
                   >
                     {item.question}
@@ -117,7 +119,7 @@ const FAQ = () => {
                         <Minus className="w-6 h-6" />
                       </div>
                     ) : (
-                      <div className="w-6 h-6 text-[#c5f011]">
+                      <div className="w-6 h-6 text-[#0047ff] dark:text-[#c5f011]">
                         <Plus className="w-6 h-6" />
                       </div>
                     )}

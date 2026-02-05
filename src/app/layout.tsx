@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import LenisWrapper from "@/components/wrapper/LenisWrapper";
 import localFont from "next/font/local";
+import RB2BLoader from "@/components/RB2BLoader";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const interFont = localFont({
   src: "../assets/fonts/Inter-VariableFont.ttf",
@@ -25,8 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem("artbeak-theme");document.documentElement.classList.toggle("dark",t!=="light");})();`,
+          }}
+        />
+      </head>
       <body
         className={`${interFont.variable} ${playfairDisplay.variable} antialiased font-inter`}
       >
@@ -42,15 +51,13 @@ export default function RootLayout({
           }}
         />
 
-        {/* Reb2b */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `console.log("[analytics] Initializing Reb2b");
-            !function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("QOQRJH905462");`,
-          }}
-        />
+        {/* RB2B loader (client-side, on every route) */}
+        <RB2BLoader />
 
-        <LenisWrapper>{children}</LenisWrapper>
+        <ThemeProvider>
+          <LenisWrapper>{children}</LenisWrapper>
+          <ExitIntentPopup />
+        </ThemeProvider>
       </body>
     </html>
   );

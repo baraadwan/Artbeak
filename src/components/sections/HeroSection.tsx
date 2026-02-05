@@ -11,7 +11,7 @@ const HeroSection = () => {
         <img
           src="/assets/images/bg.png"
           alt=""
-          className="blur-3xl w-full max-w-[1600px] h-full absolute top-0 left-1/2 -translate-x-1/2"
+          className="hidden dark:block blur-3xl w-full max-w-[1600px] h-full absolute top-0 left-1/2 -translate-x-1/2"
         />
         <img
           src="/assets/icons/A.png"
@@ -24,24 +24,24 @@ const HeroSection = () => {
           <div className="max-w-2xl mx-auto md:mx-0">
             {/* Top text */}
             <div className="mb-16 sm:mb-20 md:mb-28">
-              <span className="text-white text-base sm:text-lg font-normal">
+              <span className="text-zinc-900 dark:text-white text-base sm:text-lg font-normal">
                 Ready to
               </span>
-              <span className="text-[#c5f011] text-base sm:text-lg font-normal ml-2">
+              <span className="text-[#0047ff] dark:text-[#c5f011] text-base sm:text-lg font-normal ml-2">
                 elevate
               </span>
               <br />
-              <span className="text-[#c5f011] text-base sm:text-lg font-normal">
+              <span className="text-[#0047ff] dark:text-[#c5f011] text-base sm:text-lg font-normal">
                 your brand?
               </span>
             </div>
 
             {/* Main heading */}
             <div className="mb-6 sm:mb-8">
-              <p className="text-white text-3xl sm:text-4xl md:text-5xl italic font-normal -mb-1 sm:-mb-2">
+              <p className="text-zinc-900 dark:text-white text-3xl sm:text-4xl md:text-5xl italic font-normal -mb-1 sm:-mb-2">
                 Let&apos;s start
               </p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white leading-tight">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-zinc-900 dark:text-white leading-tight">
                 <span className="font-bold mr-2 sm:mr-3">Your</span>
                 <span className="italic font-display font-normal">Project</span>
               </h1>
@@ -53,12 +53,13 @@ const HeroSection = () => {
             </Link>
           </div>
         </div>
-        <div className="hidden md:flex absolute bottom-16 md:bottom-24 lg:bottom-32 right-4 md:right-6 lg:right-8 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[175px] md:h-[175px] bg-white/10 border bg-opacity-50 rounded-full items-center justify-center">
+        <div className="hidden md:flex absolute bottom-16 md:bottom-24 lg:bottom-32 right-4 md:right-6 lg:right-8 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[175px] md:h-[175px] bg-zinc-200/80 dark:bg-white/10 border border-zinc-300 dark:border-white/20 rounded-full items-center justify-center">
           <CircularText
             text="AWARD WINNING AGENCY - SINCE 2020 - "
             onHover="speedUp"
             spinDuration={20}
             size="small"
+            className="!text-black dark:!text-white"
           />
           <img
             src="/assets/icons/Union.png"

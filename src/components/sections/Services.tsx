@@ -20,8 +20,8 @@ const services: Service[] = [
     title: "Design",
     description: "We design websites, web apps, and mobile apps",
     icon: (
-      <div className="w-10 h-10 bg-transparent border-[1px] border-[#c5f011]/50 rounded-full flex items-center justify-center">
-        <Crown className="w-4 h-4 text-[#c5f011]" />
+      <div className="w-10 h-10 bg-transparent border-[1px] border-[#0047ff]/60 dark:border-[#c5f011]/50 rounded-full flex items-center justify-center">
+        <Crown className="w-4 h-4 text-[#0047ff] dark:text-[#c5f011]" />
       </div>
     ),
   },
@@ -30,18 +30,19 @@ const services: Service[] = [
     title: "Webflow",
     description: "We build websites using Webflow",
     icon: (
-      <div className="w-10 h-10 bg-transparent border-[1px] border-[#c5f011]/50 rounded-full flex items-center justify-center">
-        <IconBrandWebflow className="w-5 h-5 text-[#c5f011]" />
+      <div className="w-10 h-10 bg-transparent border-[1px] border-[#0047ff]/60 dark:border-[#c5f011]/50 rounded-full flex items-center justify-center">
+        <IconBrandWebflow className="w-5 h-5 text-[#0047ff] dark:text-[#c5f011]" />
       </div>
     ),
   },
   {
-    id: "code",
-    title: "Code",
-    description: "We build web apps and websites using custom code",
+    id: "optimization",
+    title: "Optimization",
+    description:
+      "We A/B test your website to continuously increase conversion rate using Winpag.com.",
     icon: (
-      <div className="w-10 h-10 bg-transparent border-[1px] border-[#c5f011]/50 rounded-full flex items-center justify-center">
-        <IconCode className="w-5 h-5 text-[#c5f011]" />
+      <div className="w-10 h-10 bg-transparent border-[1px] border-[#0047ff]/60 dark:border-[#c5f011]/50 rounded-full flex items-center justify-center">
+        <IconCode className="w-5 h-5 text-[#0047ff] dark:text-[#c5f011]" />
       </div>
     ),
   },
@@ -53,7 +54,7 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 sm:mb-14 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 leading-tight">
-            <span className="text-white">Our</span>
+            <span className="text-zinc-900 dark:text-white">Our</span>
             <span className="text-[#0047ff] font-display font-[400] italic">
               {" "}
               Services
@@ -63,12 +64,12 @@ const Services = () => {
 
         <div className="">
           {/* Top divider */}
-          <div className="w-full h-px bg-gray-600"></div>
+          <div className="w-full h-px bg-zinc-300 dark:bg-gray-600"></div>
 
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className={`relative rounded-lg transition-all duration-300 group hover:bg-[#151515] hover:shadow-lg hover:shadow-blue-500/20 hover:border-l-4 hover:border-blue-500`}
+              className={`relative rounded-lg transition-all duration-300 group hover:bg-zinc-100 dark:hover:bg-[#151515] hover:shadow-lg hover:shadow-blue-500/20 hover:border-l-4 hover:border-blue-500`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -76,11 +77,11 @@ const Services = () => {
             >
               <div className="grid grid-cols-12 items-center gap-x-4 gap-y-3 py-5">
                 <h3
-                  className={`col-span-12 md:col-span-7 text-4xl sm:text-6xl lg:text-8xl font-bold text-left ml-0 md:ml-8 text-white group-hover:text-[#0047ff] transition-colors`}
+                  className={`col-span-12 md:col-span-7 text-4xl sm:text-6xl lg:text-8xl font-bold text-left ml-0 md:ml-8 text-zinc-900 dark:text-white group-hover:text-[#0047ff] transition-colors`}
                 >
                   {service.title}
                 </h3>
-                <p className="col-span-12 md:col-span-2 text-gray-300 text-xs sm:text-sm text-left">
+                <p className="col-span-12 md:col-span-2 text-zinc-600 dark:text-gray-300 text-xs sm:text-sm text-left">
                   {service.description}
                 </p>
                 <div className="col-span-12 md:col-span-3 flex justify-start md:justify-end mr-0 md:mr-8 mt-2 md:mt-0">
@@ -89,7 +90,7 @@ const Services = () => {
               </div>
 
               {/* Separator line */}
-              <div className="w-full h-px bg-gray-600"></div>
+              <div className="w-full h-px bg-zinc-300 dark:bg-gray-600"></div>
             </motion.div>
           ))}
         </div>
@@ -153,7 +154,7 @@ const Services = () => {
 
             <div className="mt-18">
               <div className="space-y-8">
-                <p className="text-lime-400 text-sm uppercase tracking-wider">
+                <p className="text-[#0047ff] dark:text-lime-400 text-sm uppercase tracking-wider">
                   PARTNER WITH +150 BRANDS
                 </p>
 
@@ -167,7 +168,7 @@ const Services = () => {
                   ].map((brand, index) => (
                     <div
                       key={index}
-                      className="w-full h-20 sm:h-24 md:h-28 lg:h-32 border border-[#494949] rounded-full flex items-center justify-center"
+                      className="w-full h-20 sm:h-24 md:h-28 lg:h-32 border border-zinc-300 dark:border-[#494949] rounded-full flex items-center justify-center"
                     >
                       <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 relative flex items-center justify-center">
                         <img
@@ -182,8 +183,8 @@ const Services = () => {
               </div>
             </div>
           </SpotlightCard>
-          <div className="absolute inset-0 bg-[#171717] opacity-90 rounded-2xl z-20 transform translate-y-4 scale-[0.97]"></div>
-          <div className="absolute inset-0 bg-[#171717] opacity-40 rounded-2xl z-10 transform translate-y-8 scale-[0.94]"></div>
+          <div className="absolute inset-0 bg-zinc-200 dark:bg-[#171717] opacity-90 rounded-2xl z-20 transform translate-y-4 scale-[0.97]"></div>
+          <div className="absolute inset-0 bg-zinc-200 dark:bg-[#171717] opacity-40 rounded-2xl z-10 transform translate-y-8 scale-[0.94]"></div>
           {/* </Card> */}
         </div>
       </div>

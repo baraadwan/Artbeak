@@ -17,7 +17,7 @@ const Button = ({
   const bgColorClass =
     variant === "primary"
       ? "bg-[#0047ff] hover:bg-blue-700"
-      : "bg-[#222222] hover:bg-zinc-800";
+      : "bg-[#0047ff] hover:bg-blue-700 dark:bg-[#222222] dark:hover:bg-zinc-800";
 
   return (
     <button

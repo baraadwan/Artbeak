@@ -3,84 +3,39 @@
 import Link from "next/link";
 import Button from "../ui/Button";
 import Image from "next/image";
-import { Tabs } from "../ui/Tabs";
-import { useState } from "react";
+import { motion } from "framer-motion";
 
-const Content = (
-  <div className="w-full overflow-hidden relative h-full rounded-2xl text-xl md:text-4xl px-4 sm:px-8 md:px-16 font-bold text-white bg-gradient-to-br from-[#012da2] to-[#011a5d]">
-    <div className="mt-8 sm:mt-12 md:mt-16 w-full h-full">
-      <div className="flex gap-6 md:gap-10 w-full">
-        <div className="w-1/2">
-          <Image
-            src="/assets/images/showcase/previous-version.png"
-            alt="Previous Version"
-            width={600}
-            height={1000}
-            className="object-contain w-full h-auto"
-            sizes="(min-width: 1024px) 50vw, 100vw"
-          />
-        </div>
-        <div className="w-1/2">
-          <Image
-            src="/assets/images/showcase/after-version.png"
-            alt="After Version"
-            width={600}
-            height={1000}
-            className="object-contain w-full h-auto"
-            sizes="(min-width: 1024px) 50vw, 100vw"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-);
+const projects = [
+  {
+    title: "Ultimate High Website Redesign",
+    description: "Before & after of a full homepage redesign",
+    image: "/ultimate-high-redesign.png",
+  },
+  {
+    title: "Axela Construction Website Redesign",
+    description: "Turning a corporate construction site into a bold, conversion-focused experience",
+    image: "/axela-redesign.png",
+  },
+  {
+    title: "Emission Free Generators Redesign",
+    description: "Cleaner layout for a complex climate-tech product",
+    image: "/emissionfree-redesign.png",
+  },
+  {
+    title: "ARA NYC Real Estate Redesign",
+    description: "High-contrast, premium feel for commercial leasing",
+    image: "/ara-redesign.png",
+  },
+];
 
 const FeaturedWork = () => {
-  const tabs = [
-    {
-      title: "Product",
-      value: "product",
-      content: Content,
-    },
-    {
-      title: "Services",
-      value: "services",
-      content: Content,
-    },
-    {
-      title: "Playground",
-      value: "playground",
-      content: Content,
-    },
-    {
-      title: "Content",
-      value: "content",
-      content: Content,
-    },
-    {
-      title: "Random",
-      value: "random",
-      content: Content,
-    },
-  ];
-
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const goNext = () => {
-    setActiveIndex((prev) => (prev + 1) % tabs.length);
-  };
-
-  const goPrev = () => {
-    setActiveIndex((prev) => (prev - 1 + tabs.length) % tabs.length);
-  };
-
   return (
     <section id="work" className="py-0 sm:py-12 lg:py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-row gap-6 items-center justify-between mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
-            <span className="text-white">Featured</span>{" "}
+            <span className="text-zinc-900 dark:text-white">Featured</span>{" "}
             <br className="sm:hidden" />
             <span className="text-[#0047ff] font-display italic font-normal">
               {" "}
@@ -92,55 +47,49 @@ const FeaturedWork = () => {
           </Link>
         </div>
 
-        <div className="space-y-6">
-          <div className="h-56 sm:h-80 md:h-[420px] lg:h-[540px] mb-8 sm:mb-10 lg:mb-12 relative">
-            <div className="absolute inset-0 z-30">
-              <Tabs
-                tabs={tabs}
-                activeIndex={activeIndex}
-                onActiveIndexChange={setActiveIndex}
-                contentClassName="mt-0"
-              />
-            </div>
-          </div>
-          {/* Project Details */}
-          <div className="flex gap-4 items-center justify-between">
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                Snaprent Before & After
-              </h3>
-              <p className="text-[11px] sm:text-xs text-white/50">
-                Website Redesign & Webflow Development
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              {/* <button
-                aria-label="Previous"
-                onClick={goPrev}
-                className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center cursor-pointer"
-              >
+        <div className="space-y-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              className="group rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-[#050509] overflow-hidden transition-all duration-300 hover:bg-zinc-200 dark:hover:bg-[#151515] hover:shadow-lg hover:shadow-blue-500/20 hover:border-blue-500/60"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
+              <div className="relative w-full h-56 sm:h-72 md:h-[380px] lg:h-[460px]">
                 <Image
-                  src="/assets/icons/arrow-right-big.png"
-                  alt="Arrow Left"
-                  width={48}
-                  height={48}
-                  className="rotate-180"
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
                 />
-              </button> */}
-              <button
-                aria-label="Next"
-                onClick={goNext}
-                className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center cursor-pointer"
-              >
-                <Image
-                  src="/assets/icons/arrow-right-big.png"
-                  alt="Arrow Right"
-                  width={48}
-                  height={48}
-                />
-              </button>
-            </div>
-          </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-70" />
+              </div>
+
+              <div className="px-5 sm:px-7 lg:px-8 py-4 sm:py-5 lg:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <p className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-zinc-500 dark:text-white/50 mb-1">
+                    Website Redesign
+                  </p>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-900 dark:text-white">
+                    {project.title}
+                  </h3>
+                  <p className="mt-1 text-[11px] sm:text-xs lg:text-sm text-zinc-600 dark:text-white/60 max-w-2xl">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 text-[11px] sm:text-xs text-zinc-600 dark:text-white/60">
+                  <span className="hidden sm:inline">View full case study</span>
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-400 dark:border-white/25">
+                    →
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

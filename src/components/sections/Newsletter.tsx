@@ -41,14 +41,14 @@ const Newsletter = () => {
   return (
     <section
       id="newsletter"
-      className="relative w-full bg-black text-white py-24 scroll-mt-24"
+      className="relative w-full bg-zinc-100 dark:bg-black text-zinc-900 dark:text-white py-24 scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-6">
         {/* Header Section */}
         <div className="mb-16 flex items-center justify-between">
           <div>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
-              <span className="text-white">Hustle & Grind</span>{" "}
+              <span className="text-zinc-900 dark:text-white">Hustle & Grind</span>{" "}
               <span className="text-[#0047ff] font-display font-normal italic">
                 Newsletter
               </span>
@@ -68,23 +68,23 @@ const Newsletter = () => {
               onClick={() => window.open(article.link, "_blank")}
             >
               {/* Date */}
-              <p className="text-zinc-400 text-sm mb-3">{article.date}</p>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm mb-3">{article.date}</p>
 
               {/* Title */}
-              <h3 className="text-xl font-semibold text-white mb-3 underline decoration-zinc-600 underline-offset-4">
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-3 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-4">
                 {article.title}
               </h3>
 
               {/* Description */}
-              <p className="text-zinc-300 text-sm leading-relaxed mb-6">
+              <p className="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed mb-6">
                 {article.description}
               </p>
 
               {/* Image Container */}
               <div className="relative mb-6 mt-auto">
-                <div className="aspect-w-3 aspect-h-2 rounded-2xl overflow-hidden bg-zinc-800">
+                <div className="aspect-w-3 aspect-h-2 rounded-2xl overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                   {/* Image with consistent height */}
-                  <div className="w-full h-56 sm:h-64 bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center">
+                  <div className="w-full h-56 sm:h-64 bg-gradient-to-br from-zinc-300 to-zinc-200 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center">
                     <img
                       src={article.image}
                       alt={article.imageAlt}
@@ -106,7 +106,7 @@ const Newsletter = () => {
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-zinc-800"></div>
+              <div className="h-px bg-zinc-300 dark:bg-zinc-800"></div>
             </article>
           ))}
         </div>

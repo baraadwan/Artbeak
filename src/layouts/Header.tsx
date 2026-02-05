@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
 import Link from "next/link";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Sun, Moon } from "lucide-react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +36,7 @@ const Header = () => {
     <header
       className={`sticky top-0 left-0 right-0 z-[99] transition-colors ${
         isScrolled
-          ? "bg-[#000000]/70 backdrop-blur-md border-b border-[#2a2a2a]"
+          ? "bg-white/90 dark:bg-black/70 backdrop-blur-md border-b border-zinc-200 dark:border-[#2a2a2a]"
           : "bg-transparent"
       }`}
     >
@@ -49,15 +52,16 @@ const Header = () => {
                   viewBox="0 0 41 34"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="text-zinc-900 dark:text-white"
                 >
                   <path
                     d="M29.9509 24.8835H10.3348L6.23662 33.0799H0.0663058L17.0577 0.340383H22.9978L40.2654 33.0799H34.1872L29.9509 24.8835ZM20.0047 5.5437L12.6832 20.1867H27.5564L20.0047 5.5437Z"
-                    fill="white"
+                    fill="currentColor"
                   />
                 </svg>
                 <div className="w-5 h-5 relative">
                   <motion.svg
-                    className="absolute -top-3 right-1 w-5 h-6 text-[#c5f011]"
+                    className="absolute -top-3 right-1 w-5 h-6 text-[#0047ff] dark:text-[#c5f011]"
                     fill="currentColor"
                     viewBox="0 0 25 24"
                     style={{ originX: 0.5, originY: 0.5 }}
@@ -78,16 +82,24 @@ const Header = () => {
           </div>
 
           {/* Center - Location & Time */}
-          <div className="hidden md:flex items-center space-x-4 text-white">
+          <div className="hidden md:flex items-center space-x-4 text-zinc-700 dark:text-white">
             <span className="text-sm font-medium font-inter">Cairo, Egypt</span>
             <span className="text-sm font-medium font-inter">
               {getCurrentTime()}
             </span>
           </div>
 
-          {/* Right - Menu Button (Popover) */}
-          <div className="flex items-center space-x-4">
-            <span className="text-white text-sm font-medium hidden md:block font-inter">
+          {/* Right - Theme toggle + Menu */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:text-[#0047ff] dark:hover:text-[#0047ff] hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+            <span className="text-zinc-700 dark:text-white text-sm font-medium hidden md:block font-inter">
               Menu
             </span>
             <Popover
@@ -132,7 +144,7 @@ const Header = () => {
                   </div>
                 </button>
               </PopoverTrigger>
-              <PopoverContent className="p-2 bg-[#1a1a1a] backdrop-blur-sm rounded-lg border border-[#2a2a2a]">
+              <PopoverContent className="p-2 bg-white dark:bg-[#1a1a1a] backdrop-blur-sm rounded-lg border border-zinc-200 dark:border-[#2a2a2a] shadow-xl">
                 <div className="px-2 py-1 space-y-1 min-w-48">
                   <button
                     onClick={() => {
@@ -142,7 +154,7 @@ const Header = () => {
                       });
                       setMenuOpen(false);
                     }}
-                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                    className="text-zinc-800 dark:text-white hover:text-[#0047ff] block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
                   >
                     Home
                   </button>
@@ -154,7 +166,7 @@ const Header = () => {
                       });
                       setMenuOpen(false);
                     }}
-                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                    className="text-zinc-800 dark:text-white hover:text-[#0047ff] block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
                   >
                     Services
                   </button>
@@ -166,7 +178,7 @@ const Header = () => {
                       });
                       setMenuOpen(false);
                     }}
-                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                    className="text-zinc-800 dark:text-white hover:text-[#0047ff] block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
                   >
                     Work
                   </button>
@@ -178,7 +190,7 @@ const Header = () => {
                       });
                       setMenuOpen(false);
                     }}
-                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                    className="text-zinc-800 dark:text-white hover:text-[#0047ff] block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
                   >
                     Pricing
                   </button>
@@ -190,21 +202,9 @@ const Header = () => {
                       });
                       setMenuOpen(false);
                     }}
-                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                    className="text-zinc-800 dark:text-white hover:text-[#0047ff] block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
                   >
                     FAQ
-                  </button>
-                  <button
-                    onClick={() => {
-                      document.getElementById("newsletter")?.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                      });
-                      setMenuOpen(false);
-                    }}
-                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
-                  >
-                    Newsletter
                   </button>
                   <button
                     onClick={() => {
@@ -214,7 +214,7 @@ const Header = () => {
                       });
                       setMenuOpen(false);
                     }}
-                    className="text-white hover:text-blue-400 block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
+                    className="text-zinc-800 dark:text-white hover:text-[#0047ff] block w-full text-left px-3 py-2 text-base font-medium transition-colors font-inter"
                   >
                     Start Now
                   </button>
@@ -223,8 +223,8 @@ const Header = () => {
             </Popover>
           </div>
         </div>
-        {/* White line that disappears when scrolling */}
-        {!isScrolled && <div className="h-px bg-white"></div>}
+        {/* Line that disappears when scrolling */}
+        {!isScrolled && <div className="h-px bg-zinc-300 dark:bg-white"></div>}
       </div>
     </header>
   );
