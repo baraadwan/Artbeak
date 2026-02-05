@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import LenisWrapper from "@/components/wrapper/LenisWrapper";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import RB2BLoader from "@/components/RB2BLoader";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 
-const interFont = localFont({
-  src: "../assets/fonts/Inter-VariableFont.ttf",
+const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const playfairDisplay = localFont({
@@ -37,7 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${interFont.variable} ${playfairDisplay.variable} antialiased font-inter`}
+        className={`${plusJakartaSans.variable} ${playfairDisplay.variable} antialiased font-inter`}
       >
         {/* Microsoft Clarity */}
         <script

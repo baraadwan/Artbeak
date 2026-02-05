@@ -34,13 +34,10 @@ const FeaturedWork = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-row gap-6 items-center justify-between mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
-            <span className="text-zinc-900 dark:text-white">Featured</span>{" "}
-            <br className="sm:hidden" />
-            <span className="text-[#0047ff] font-display italic font-normal">
-              {" "}
-              Work
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight max-w-xl">
+            <span className="text-zinc-900 dark:text-white">A few of our</span>{" "}
+            <span className="text-[#0047ff] font-display italic font-normal">featured</span>{" "}
+            <span className="text-zinc-900 dark:text-white">website redesigns.</span>
           </h2>
           <Link href="https://www.behance.net/artbeak">
             <Button>See More</Button>
@@ -51,7 +48,7 @@ const FeaturedWork = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="group rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-[#050509] overflow-hidden transition-all duration-300 hover:bg-zinc-200 dark:hover:bg-[#151515] hover:shadow-lg hover:shadow-blue-500/20 hover:border-blue-500/60"
+              className="group rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-[#050509] overflow-hidden transition-all duration-300 hover:bg-zinc-200 dark:hover:bg-[#151515]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -68,25 +65,16 @@ const FeaturedWork = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-70" />
               </div>
 
-              <div className="px-5 sm:px-7 lg:px-8 py-4 sm:py-5 lg:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                  <p className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-zinc-500 dark:text-white/50 mb-1">
-                    Website Redesign
-                  </p>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-900 dark:text-white">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-[11px] sm:text-xs lg:text-sm text-zinc-600 dark:text-white/60 max-w-2xl">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3 text-[11px] sm:text-xs text-zinc-600 dark:text-white/60">
-                  <span className="hidden sm:inline">View full case study</span>
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-400 dark:border-white/25">
-                    →
-                  </span>
-                </div>
+              <div className="px-5 sm:px-7 lg:px-8 py-5 sm:py-6 lg:py-8">
+                <p className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-zinc-500 dark:text-white/50 mb-3">
+                  Website Redesign
+                </p>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-900 dark:text-white mb-3">
+                  {project.title}
+                </h3>
+                <p className="text-[11px] sm:text-xs lg:text-sm text-zinc-600 dark:text-white/60 max-w-2xl leading-relaxed">
+                  {project.description}
+                </p>
               </div>
             </motion.div>
           ))}

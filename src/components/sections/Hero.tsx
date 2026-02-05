@@ -48,8 +48,29 @@ const Hero = () => {
 
             {/* Social Proof */}
             <div className="space-y-4 pt-6 sm:pt-8">
-              <p className="text-zinc-800 dark:text-white text-base sm:text-lg py-1 font-inter">
-                5.0 Average Rating on{" "}
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2.5">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-zinc-100 dark:border-[#010208] overflow-hidden bg-zinc-200 dark:bg-zinc-700 flex-shrink-0">
+                    <Image
+                      src="/assets/clients/client-kevin-.jpeg"
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-zinc-100 dark:border-[#010208] overflow-hidden bg-zinc-200 dark:bg-zinc-700 flex-shrink-0">
+                    <Image
+                      src="/assets/clients/client-param-singh.jpeg"
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                <p className="text-zinc-800 dark:text-white text-base sm:text-lg py-1 font-inter">
+                  5.0 Average Rating on{" "}
                 <span
                   onClick={() =>
                     window.open(
@@ -62,6 +83,7 @@ const Hero = () => {
                   Google
                 </span>
               </p>
+              </div>
               <div className="  mb-7 sm:mb-10 lg:mb-20"></div>
               {/* Social Icons */}
               <div className="flex space-x-3 sm:space-x-4">
@@ -111,10 +133,9 @@ const Hero = () => {
             <div className="h-px bg-zinc-400 dark:bg-gray-600 mt-10 md:mt-20 lg:mt-28"></div>
 
             {/* Key Statistics */}
-            <div className="grid grid-cols-2 gap-6 sm:gap-8 ">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 ">
               <div className="text-left">
                 <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#0047ff] dark:text-[#C5F010] mb-2 font-inter">
-                  {/* 95% */}
                   <CountUp
                     from={0}
                     to={95}
@@ -126,7 +147,7 @@ const Hero = () => {
                   %
                 </div>
                 <div className="text-zinc-800 dark:text-white text-xs sm:text-sm leading-tight font-inter">
-                  CLIENTS SATISFIED AND <br /> REPEATING
+                  CLIENTS SATISFIED
                 </div>
               </div>
               <div className="text-left">
@@ -142,7 +163,23 @@ const Hero = () => {
                   +
                 </div>
                 <div className="text-zinc-800 dark:text-white text-xs sm:text-sm leading-tight font-inter">
-                  PROJECTS COMPLETED IN <br /> 6 COUNTRIES
+                  PROJECTS COMPLETED
+                </div>
+              </div>
+              <div className="text-left">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#0047ff] dark:text-[#C5F010] mb-2 font-inter">
+                  <CountUp
+                    from={0}
+                    to={40}
+                    separator=","
+                    direction="up"
+                    duration={0.1}
+                    className="count-up-text"
+                  />
+                  %
+                </div>
+                <div className="text-zinc-800 dark:text-white text-xs sm:text-sm leading-tight font-inter">
+                  AVG. CONVERSION LIFT
                 </div>
               </div>
             </div>
@@ -191,8 +228,8 @@ const Hero = () => {
               </div>
               <div className="flex-1 sm:ml-10 lg:ml-80">
                 <p className="text-zinc-800 dark:text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal font-inter">
-                  A US Wyoming company based in Cairo, turning ordinary websites
-                  into conversion machines with a risk-free model.
+                  A US company based in Cairo, turning ordinary websites
+                  into conversion machines risk-free.
                 </p>
               </div>
             </div>

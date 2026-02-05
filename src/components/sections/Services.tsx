@@ -53,12 +53,9 @@ const Services = () => {
     <section id="services" className="py-14 sm:py-16 lg:py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 sm:mb-14 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 leading-tight">
-            <span className="text-zinc-900 dark:text-white">Our</span>
-            <span className="text-[#0047ff] font-display font-[400] italic">
-              {" "}
-              Services
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 leading-tight max-w-xl">
+            <span className="text-zinc-900 dark:text-white">Here’s what we do to</span>{" "}
+            <span className="text-[#0047ff] font-display font-[400] italic">grow your business.</span>
           </h2>
         </div>
 
