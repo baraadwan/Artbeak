@@ -17,7 +17,7 @@ const features = [
 const tiers = [
   {
     name: "Single Website",
-    price: "$1,999",
+    price: "$2,999",
     cadence: "/site",
     subtitle:
       "Full redesign and build for one site, plus 1 free month of maintenance & CRO.",
