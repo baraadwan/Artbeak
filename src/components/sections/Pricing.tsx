@@ -1,74 +1,118 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Button from "../ui/Button";
 import { motion } from "framer-motion";
 
-const features = [
-  "What’s included",
-  "Service type",
-  "Site scope",
-  "Revisions / iterations",
-  "Support & monitoring",
-  "Active requests at a time",
-  "NDA Agreement included",
+type Item = { label: string; detail?: string };
+
+const stage1: Item[] = [
+  {
+    label: "Conversion audit",
+    detail: "Review of current website performance, CTAs, and messaging",
+  },
+  {
+    label: "SEO audit",
+    detail: "Current rankings, structure, and technical setup",
+  },
+  {
+    label: "AEO audit",
+    detail:
+      "Assessment of visibility in AI search tools such as ChatGPT and Google AI",
+  },
+  {
+    label: "Baseline documentation",
+    detail: "Recording current conversion rate and key metrics",
+  },
+  {
+    label: "Analytics setup",
+    detail:
+      "Google Analytics, conversion tracking, heatmaps via Microsoft Clarity",
+  },
+  {
+    label: "Wireframes",
+    detail: "Page structure, layout, and conversion flow planning",
+  },
 ];
 
-const tiers = [
+const stage2: Item[] = [
+  { label: "Website redesign", detail: "Up to 20 pages" },
+  { label: "Conversion-focused UX and layout" },
+  { label: "Development in Webflow" },
+  { label: "Full preview before launch for review and approval" },
   {
-    name: "Single Website",
-    price: "$4,499",
-    cadence: "/site",
-    subtitle:
-      "Full redesign and build for one site, plus 1 free month of maintenance & CRO.",
-    values: [
-      "Design & development for one site",
-      "Webflow or custom code build",
-      "Up to 20 pages",
-      "Up to 3 revision rounds",
-      "1 free month of Maintenance & CRO plans",
-      "N/A",
-      "Included",
-    ],
-    cta: { label: "Start For Free" },
-    highlight: true,
+    label: "SEO foundation setup",
+    detail: "Metadata, schema markup, sitemap, heading structure",
   },
   {
-    name: "Maintenance Plan",
-    price: "$99",
-    cadence: "/mo",
-    subtitle:
-      "Bugs, security, content updates, and 24/7 monitoring.",
-    values: [
-      "Ongoing maintenance & small updates",
-      "Bug fixes, security & content changes",
-      "Existing live website",
-      "Unlimited minor edits",
-      "24/7 monitoring & priority support",
-      "1 active request at a time",
-      "Included",
+    label: "Performance optimization",
+    detail: "Core Web Vitals, page speed, mobile responsiveness",
+  },
+  { label: "Migration and launch with tracking verification" },
+];
+
+const growthGroups: { title: string; items: Item[] }[] = [
+  {
+    title: "Conversion Optimization (CRO)",
+    items: [
+      { label: "Monthly funnel and conversion review" },
+      { label: "Heatmap and session recording analysis" },
+      { label: "Weekly A/B testing" },
+      { label: "CTA and lead form optimization" },
+      { label: "Monthly CRO performance report" },
+      { label: "Quarterly strategy meeting" },
     ],
-    cta: { label: "Start For Free" },
-    highlight: false,
   },
   {
-    name: "Conversion Optimization",
-    price: "$199",
-    cadence: "/mo",
-    subtitle:
-      "A/B testing and CRO to boost your conversion rate.",
-    values: [
-      "Ongoing test design & implementation",
-      "CRO strategy & A/B testing",
-      "Key funnels and landing pages",
-      "Continuous experiment cycles",
-      "Included",
-      "1 active experiment at a time",
-      "Included",
+    title: "SEO (Search Engine Optimization)",
+    items: [
+      { label: "Monthly keyword research" },
+      { label: "2 SEO-optimized blog posts per month" },
+      { label: "Internal linking updates" },
+      { label: "Google Search Console monitoring" },
+      { label: "Technical SEO checks and fixes" },
     ],
-    cta: { label: "Start For Free" },
-    highlight: false,
   },
+  {
+    title: "AEO (Answer Engine Optimization)",
+    items: [
+      {
+        label: "Content structured for AI search tools",
+        detail: "e.g., ChatGPT, Google AI, Perplexity",
+      },
+      { label: "FAQ and featured snippet optimization" },
+      { label: "Structured data and schema updates" },
+    ],
+  },
+  {
+    title: "Development & Maintenance",
+    items: [
+      { label: "Up to 5 page requests per month", detail: "New pages or edits" },
+      { label: "Bug fixes and maintenance" },
+      { label: "Uptime monitoring" },
+      { label: "Performance checks" },
+    ],
+  },
+];
+
+const deliverables: Item[] = [
+  { label: "Design tasks", detail: "2–3 business days" },
+  {
+    label: "Development tasks",
+    detail: "3–5 business days, depending on complexity",
+  },
+  { label: "Revisions", detail: "1–2 business days" },
+  {
+    label: "Monthly deliverables (reporting, blog posts)",
+    detail: "Delivered by the end of each month",
+  },
+];
+
+const requestProcess: Item[] = [
+  { label: "Requests are submitted through the client portal" },
+  { label: "Tasks are completed one at a time in priority order" },
+  { label: "Clients can submit multiple requests and assign priority" },
+  { label: "Feedback and revisions are handled within each task" },
 ];
 
 const CheckIcon = () => (
@@ -76,7 +120,8 @@ const CheckIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
-    className="h-5 w-5 text-emerald-400"
+    className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-400"
+    aria-hidden="true"
   >
     <path
       fillRule="evenodd"
@@ -86,338 +131,192 @@ const CheckIcon = () => (
   </svg>
 );
 
+const ItemList = ({ items }: { items: Item[] }) => (
+  <ul className="space-y-3">
+    {items.map((item) => (
+      <li key={item.label} className="flex items-start gap-3 text-sm">
+        <CheckIcon />
+        <div className="min-w-0">
+          <span className="text-zinc-900 dark:text-white">{item.label}</span>
+          {item.detail && (
+            <p className="mt-0.5 text-zinc-500 dark:text-zinc-400">
+              {item.detail}
+            </p>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+);
+
+const StageCard = ({
+  stage,
+  tag,
+  title,
+  description,
+  children,
+}: {
+  stage: string;
+  tag: string;
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}) => (
+  <div className="rounded-3xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900/60 p-6 md:p-8">
+    <div className="flex flex-wrap items-center gap-3">
+      <span className="text-sm font-medium text-[#0047ff] dark:text-[#c5f011]">
+        {stage}
+      </span>
+      <span className="rounded-full bg-zinc-100 dark:bg-white/10 px-3 py-1 text-xs text-zinc-600 dark:text-zinc-300">
+        {tag}
+      </span>
+    </div>
+    <h3 className="mt-3 text-2xl font-semibold tracking-tight">{title}</h3>
+    <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-300">
+      {description}
+    </p>
+    <div className="mt-6">{children}</div>
+  </div>
+);
+
 const Pricing = () => {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const bestChoiceRef = useRef<HTMLDivElement | null>(null);
-  const [badgePos, setBadgePos] = useState<{ top: number; left: number }>({
-    top: -9999,
-    left: -9999,
-  });
-  const [isYearly, setIsYearly] = useState(false);
   const PRICING_CONTACT_URL =
     "https://pgraqmyxdqr.typeform.com/to/PBkWGxPz#hubspot_utk=xxxxx&hubspot_page_name=xxxxx&hubspot_page_url=xxxxx";
-  const SINGLE_WEBSITE_CHECKOUT_URL =
-    "https://buy.stripe.com/00wbJ28WH08afxGbYh3F604";
-  const UNLIMITED_WEBSITE_MONTHLY_URL =
-    "https://buy.stripe.com/cNi3cw6Oz6wy2KUgex3F605";
-  const UNLIMITED_WEBSITE_YEARLY_URL =
-    "https://buy.stripe.com/9B69AU2yj5su71a9Q93F607";
 
-  const UNLIMITED_WEB_APP_MONTHLY_URL =
-    "https://buy.stripe.com/6oUdRab4P9IK2KU4vP3F606";
-  const UNLIMITED_WEB_APP_YEARLY_URL =
-    "https://buy.stripe.com/fZu4gAgp93km71aaUd3F608";
-
-  // Calculate prices based on billing period
-  const calculatePrice = (basePrice: string, tierName: string) => {
-    const numericPrice = parseInt(basePrice.replace(/[$,]/g, ""));
-    // Single Website is a one-time purchase, no discount for yearly
-    if (isYearly && tierName !== "Single Website") {
-      const discountedPrice = Math.round(numericPrice * 0.8); // 20% discount
-      return `$${discountedPrice.toLocaleString()}`;
-    }
-    return basePrice;
+  const openContact = () => {
+    window.open(PRICING_CONTACT_URL, "_blank", "noopener,noreferrer");
   };
 
-  useEffect(() => {
-    const updateBadgePosition = () => {
-      if (!sectionRef.current || !bestChoiceRef.current) return;
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const cardRect = bestChoiceRef.current.getBoundingClientRect();
-
-      // Anchor to the card's top-right corner, relative to section
-      const top = cardRect.top - sectionRect.top;
-      const left = cardRect.right - sectionRect.left;
-
-      setBadgePos({ top, left });
-    };
-
-    updateBadgePosition();
-    window.addEventListener("resize", updateBadgePosition);
-    window.addEventListener("scroll", updateBadgePosition, { passive: true });
-
-    const interval = setInterval(updateBadgePosition, 500); // handle layout shifts
-
-    return () => {
-      window.removeEventListener("resize", updateBadgePosition);
-      window.removeEventListener("scroll", updateBadgePosition);
-      clearInterval(interval);
-    };
-  }, []);
   return (
     <section
       id="pricing"
-      ref={sectionRef}
       className="relative w-full bg-zinc-50 dark:bg-black text-zinc-900 dark:text-white py-24 scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-14 flex items-end justify-between gap-6">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">
-              <span className="text-zinc-900 dark:text-white">Choose a single project</span>
-              <br />
-              <span className="text-[#0047ff] font-display font-normal italic">
-                or flexible monthly plans
-              </span>
-            </h2>
-            <p className="mt-4 max-w-xl text-sm md:text-base text-zinc-600 dark:text-zinc-300">
-              One-time website redesign or ongoing maintenance and CRO. Pick what fits your needs.
-            </p>
-          </div>
-          <div className="hidden md:flex items-center rounded-full bg-zinc-200 dark:bg-zinc-900 p-1">
-            <button
-              onClick={() => setIsYearly(false)}
-              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
-                !isYearly
-                  ? "bg-[#0047ff] text-white"
-                  : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setIsYearly(true)}
-              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
-                isYearly
-                  ? "bg-[#0047ff] text-white"
-                  : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
-              }`}
-            >
-              Yearly
-              <span className="ml-1 py-[1px] rounded-full bg-white dark:bg-white text-black px-1">
-                -20%
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile: billing period toggle */}
-        <div className="md:hidden mb-6 flex items-center justify-center">
-          <div className="flex items-center rounded-full bg-zinc-200 dark:bg-zinc-900 p-1">
-            <button
-              onClick={() => setIsYearly(false)}
-              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
-                !isYearly
-                  ? "bg-[#0047ff] text-white"
-                  : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setIsYearly(true)}
-              className={`px-4 py-1.5 text-sm rounded-full transition-colors cursor-pointer ${
-                isYearly
-                  ? "bg-[#0047ff] text-white"
-                  : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
-              }`}
-            >
-              Yearly
-              <span className="ml-1 py-[1px] rounded-full bg-white dark:bg-white text-black px-1">
-                -20%
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile: stacked cards */}
-        <div className="md:hidden grid grid-cols-1 gap-6 items-stretch ">
-          {tiers.map((tier, index) => (
-            <motion.div
-              key={`mobile-${tier.name}`}
-              className={`relative rounded-3xl backdrop-blur-sm border transition-all duration-300 hover:shadow-lg ${
-                tier.highlight
-                  ? "bg-white dark:bg-zinc-950/60 border-zinc-200 dark:border-transparent ring-1 ring-blue-500/50 shadow-[0_0_60px_-15px_rgba(59,130,246,0.6)] hover:shadow-[0_0_80px_-10px_rgba(59,130,246,0.8)] hover:shadow-blue-500/30"
-                  : "bg-zinc-100 dark:bg-zinc-900/80 border-zinc-200 dark:border-white/10 hover:ring-1 hover:ring-[#0047ff]/30 hover:shadow-[#0047ff]/20"
-              }`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {tier.highlight && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-[#0047ff] rounded-full">
-                  <span className="relative z-10 text-sm text-white">Best Choice</span>
-                </div>
-              )}
-              <div className="p-6">
-                <p className="uppercase tracking-widest text-xs text-zinc-500 dark:text-zinc-400">
-                  {tier.name}
-                </p>
-                <div className="mt-2 flex items-baseline gap-2">
-                  <span className="text-3xl font-semibold">
-                    {calculatePrice(tier.price, tier.name)}
-                  </span>
-                  <span className="text-zinc-500 dark:text-zinc-400">{tier.cadence}</span>
-                </div>
-                <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{tier.subtitle}</p>
-              </div>
-              <div className="border-t border-zinc-200 dark:border-white/10">
-                {features.map((feature, rowIndex) => (
-                  <div
-                    key={`mfeat-${feature}`}
-                    className="flex items-center justify-between gap-4 px-6 py-3 text-sm border-b border-zinc-200 dark:border-white/10 last:border-b-0"
-                  >
-                    <span className="text-left text-zinc-600 dark:text-zinc-300 min-w-0 flex-1">
-                      {feature}
-                    </span>
-                    <span className="flex items-center justify-end gap-2 text-right text-zinc-700 dark:text-zinc-200 flex-shrink-0 min-w-0 max-w-[55%]">
-                      {tier.values[rowIndex] === "Included" ? (
-                        <CheckIcon />
-                      ) : (
-                        <span className="text-zinc-600 dark:text-zinc-300 text-right">
-                          {tier.values[rowIndex]}
-                        </span>
-                      )}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="p-6">
-                <Button
-                  className={`w-full ${tier.highlight ? "bg-[#1F6BFF]" : ""}`}
-                  onClick={() => {
-                    window.open(
-                      PRICING_CONTACT_URL,
-                      "_blank",
-                      "noopener,noreferrer"
-                    );
-                  }}
-                >
-                  {tier.cta.label}
-                </Button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Floating badge for highlighted card (desktop/tablet), avoids overflow clipping */}
-        <div
-          className="hidden md:block absolute z-50"
-          style={{
-            top: badgePos.top - 45,
-            left: badgePos.left - 100,
-          }}
-        >
-          <div className="relative w-[85px] h-[85px] flex items-center justify-center">
-            <svg
-              width="80"
-              height="80"
-              viewBox="0 0 66 72"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{
-                filter: "drop-shadow(-10px 15px 20px rgba(0,53,191,0.75))",
-              }}
-            >
-              <path
-                d="M21.931 5.63834C27.4464 -1.77913 38.5536 -1.77913 44.069 5.63834V5.63834C46.3383 8.69025 49.767 10.6698 53.5447 11.1091V11.1091C62.7261 12.1768 68.2797 21.796 64.6137 30.2812V30.2812C63.1053 33.7724 63.1053 37.7315 64.6137 41.2227V41.2227C68.2797 49.7079 62.7261 59.3271 53.5447 60.3948V60.3948C49.767 60.8341 46.3383 62.8136 44.069 65.8656V65.8656C38.5536 73.283 27.4464 73.283 21.931 65.8656V65.8656C19.6617 62.8136 16.233 60.8341 12.4553 60.3948V60.3948C3.27394 59.3271 -2.27968 49.7079 1.38635 41.2227V41.2227C2.89474 37.7315 2.89474 33.7724 1.38635 30.2812V30.2812C-2.27968 21.796 3.27394 12.1768 12.4553 11.1091V11.1091C16.233 10.6698 19.6617 8.69025 21.931 5.63834V5.63834Z"
-                fill="#0047FF"
-              />
-            </svg>
-            <span className="absolute z-10 text-sm text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-              Best <br /> Choice
+        <div className="mb-14">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">
+            <span className="text-zinc-900 dark:text-white">
+              One plan for your redesign
             </span>
-          </div>
+            <br />
+            <span className="text-[#0047ff] font-display font-normal italic">
+              and every month after
+            </span>
+          </h2>
+          <p className="mt-4 max-w-xl text-sm md:text-base text-zinc-600 dark:text-zinc-300">
+            We rebuild your website first, then keep improving it every month
+            with optimization, SEO, AEO, and maintenance.
+          </p>
         </div>
 
-        {/* Desktop/tablet: table-like grid */}
-        <div className="hidden md:block overflow-auto">
-          <div className="min-w-[880px] grid grid-cols-4">
-            {/* Header Row */}
-            <div className="col-span-1 p-8 border-b border-zinc-200 dark:border-white/10 flex items-center gap-3">
-              <motion.svg
-                className="w-16 h-16 text-[#0047ff] dark:text-[#c5f011]"
-                fill="currentColor"
-                viewBox="0 0 25 24"
-                style={{ originX: 0.5, originY: 0.5 }}
-                animate={{ rotate: [0, 360], scale: [1, 0.92, 1.06, 1] }}
-                transition={{
-                  duration: 2,
-                  ease: "linear",
-                  repeat: Infinity,
-                  repeatDelay: 0.5,
-                  times: [0, 0.4, 0.65, 1],
-                }}
-              >
-                <path d="M0.651611 11.9974C6.65029 11.9974 12.649 5.99868 12.649 0C12.649 5.99868 18.6477 11.9974 24.6463 11.9974C18.6477 11.9974 12.649 17.996 12.649 23.9947C12.649 17.996 6.65029 11.9974 0.651611 11.9974Z" />
-              </motion.svg>
+        <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 items-start">
+          {/* Plan card */}
+          <motion.div
+            className="lg:sticky lg:top-28 rounded-3xl border border-zinc-200 dark:border-transparent bg-white dark:bg-zinc-950/60 p-8 ring-1 ring-blue-500/50 shadow-[0_0_60px_-15px_rgba(59,130,246,0.6)]"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              Website Growth Retainer
+            </p>
+            <div className="mt-3 flex items-baseline gap-2">
+              <span className="text-5xl font-semibold">$1,000</span>
+              <span className="text-zinc-500 dark:text-zinc-400">/ month</span>
             </div>
-            {tiers.map((tier) => (
-              <div
-                key={`head-${tier.name}`}
-                className={`relative p-6 pt-10 border-b border-zinc-200 dark:border-white/10 flex flex-col items-center text-center ${
-                  tier.highlight
-                    ? "bg-zinc-100 dark:bg-white/10 rounded-t-3xl"
-                    : "bg-white dark:bg-zinc-900/60 rounded-t-3xl"
-                }`}
-                ref={tier.highlight ? bestChoiceRef : null}
-              >
-                <p className="uppercase tracking-widest text-xs text-zinc-500 dark:text-zinc-400">
-                  {tier.name}
-                </p>
-                <div className="mt-4 flex items-baseline gap-2 justify-center">
-                  <span className="text-3xl md:text-4xl font-semibold">
-                    {calculatePrice(tier.price, tier.name)}
-                  </span>
-                  <span className="text-zinc-500 dark:text-zinc-400">{tier.cadence}</span>
-                </div>
-                <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{tier.subtitle}</p>
-              </div>
-            ))}
+            <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-300">
+              A complete website redesign followed by ongoing growth,
+              optimization, SEO, AEO, and maintenance.
+            </p>
 
-            {/* Feature Rows */}
-            {features.map((feature, rowIndex) => (
-              <React.Fragment key={`row-${feature}`}>
-                <div className="col-span-1 px-6 py-4 text-sm border-b border-zinc-200 dark:border-white/10 flex items-center">
-                  <span className="text-zinc-600 dark:text-zinc-300">{feature}</span>
-                </div>
-                {tiers.map((tier) => (
-                  <div
-                    key={`val-${tier.name}-${feature}`}
-                    className={`px-8 py-4 text-sm border-b border-zinc-200 dark:border-white/10 flex items-center justify-center text-center ${
-                      tier.highlight
-                        ? "bg-zinc-100 dark:bg-white/10"
-                        : "bg-white dark:bg-zinc-900/60"
-                    }`}
-                  >
-                    {tier.values[rowIndex] === "Included" ? (
-                      <CheckIcon />
-                    ) : (
-                      <span className="text-zinc-600 dark:text-zinc-300 text-center block w-full">
-                        {tier.values[rowIndex]}
-                      </span>
-                    )}
+            <div className="mt-6">
+              <Button variant="primary" className="w-full" onClick={openContact}>
+                Get Started
+              </Button>
+            </div>
+
+            <div className="mt-6 rounded-2xl bg-zinc-100 dark:bg-white/10 p-4">
+              <p className="text-sm font-medium">Guarantee</p>
+              <ul className="mt-3 space-y-3 text-sm text-zinc-600 dark:text-zinc-300">
+                <li className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span>
+                    If no measurable results are achieved within the first 3
+                    months, all payments are refunded
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span>The client retains the completed website</span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="mt-6 text-xs text-zinc-500 dark:text-zinc-400">
+              Stages 1 and 2 are completed at the start. Stage 3 continues
+              monthly.
+            </p>
+          </motion.div>
+
+          {/* Stages */}
+          <div className="space-y-6">
+            <StageCard
+              stage="Stage 1"
+              tag="One-time"
+              title="Audit & Wireframe"
+              description="This stage establishes the current baseline and defines the structure of the new website."
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                <ItemList items={stage1.slice(0, 3)} />
+                <ItemList items={stage1.slice(3)} />
+              </div>
+            </StageCard>
+
+            <StageCard
+              stage="Stage 2"
+              tag="One-time"
+              title="Design & Development"
+              description="This stage includes the full redesign and build of the website."
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                <ItemList items={stage2.slice(0, 4)} />
+                <ItemList items={stage2.slice(4)} />
+              </div>
+            </StageCard>
+
+            <StageCard
+              stage="Stage 3"
+              tag="Recurring monthly"
+              title="Monthly Growth Plan"
+              description="This stage includes ongoing optimization, content, and support."
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {growthGroups.map((group) => (
+                  <div key={group.title}>
+                    <h4 className="mb-4 text-base font-semibold">
+                      {group.title}
+                    </h4>
+                    <ItemList items={group.items} />
                   </div>
                 ))}
-              </React.Fragment>
-            ))}
-
-            {/* CTA Row */}
-            <div className="col-span-1 p-6" />
-            {tiers.map((tier) => (
-              <div
-                key={`cta-${tier.name}`}
-                className={`p-6 flex items-center justify-center ${
-                  tier.highlight
-                    ? "bg-zinc-100 dark:bg-white/10 rounded-b-3xl"
-                    : "bg-white dark:bg-zinc-900/60 rounded-b-3xl"
-                }`}
-              >
-                <Button
-                  variant={tier.highlight ? "primary" : "secondary"}
-                  onClick={() => {
-                    window.open(
-                      PRICING_CONTACT_URL,
-                      "_blank",
-                      "noopener,noreferrer"
-                    );
-                  }}
-                >
-                  {tier.cta.label}
-                </Button>
               </div>
-            ))}
+            </StageCard>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="rounded-3xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900/60 p-6 md:p-8">
+                <h3 className="mb-5 text-xl font-semibold tracking-tight">
+                  Deliverables & Timelines
+                </h3>
+                <ItemList items={deliverables} />
+              </div>
+              <div className="rounded-3xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900/60 p-6 md:p-8">
+                <h3 className="mb-5 text-xl font-semibold tracking-tight">
+                  Request Process
+                </h3>
+                <ItemList items={requestProcess} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
